@@ -1,17 +1,7 @@
 /* MOEI Case Cockpit — Service Worker
    Bump CACHE version on every deploy to trigger update detection. */
-const CACHE = 'moei-cockpit-v2';
-const SHELL  = [
-  '/app/',
-  '/app/styles.css',
-  '/app/app.js',
-  '/app/wizard.html',
-  '/app/wizard-core.js',
-  '/app/wizard.js',
-  '/app/manifest.webmanifest',
-  '/app/icon.svg',
-  '/app/sw.js'
-];
+const CACHE = 'moei-cockpit-v1';
+const SHELL  = ['/app/', '/app/styles.css', '/app/app.js', '/app/sw.js'];
 
 self.addEventListener('install', e => {
   e.waitUntil(

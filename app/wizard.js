@@ -16,9 +16,9 @@ const WIZ = (() => {
     submitting: false,
     submittedAppId: null,
     form: {
-      name:        '',
-      emiratesId:  '',
-      mobile:      '',
+      name:        'Khalid Al Ketbi',
+      emiratesId:  '784-1985-1234567-8',
+      mobile:      '+971 50 123 4567',
       email:       '',
       salary:      '',
       obligations: '',

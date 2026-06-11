@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="MOEI">
-  <rect width="512" height="512" rx="112" fill="#050b14"/>
-  <rect x="48" y="48" width="416" height="416" rx="88" fill="#101827" stroke="#c9a227" stroke-width="8"/>
-  <path d="M96 352V160h52l54 98 54-98h52v192h-48V241l-43 79h-30l-43-79v111H96Z" fill="#f8f3e5"/>
-  <path d="M338 160h78v43h-78v-43Zm0 75h78v43h-78v-43Zm0 75h78v42h-78v-42Z" fill="#c9a227"/>
-</svg>
