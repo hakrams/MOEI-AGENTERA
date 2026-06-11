@@ -1028,6 +1028,20 @@ body {
   line-height: 1.55;
 }
 
+.entry-action-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.entry-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
 .track-form {
   display: flex;
   flex-direction: column;
@@ -1091,7 +1105,8 @@ body {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: fit-content;
+  width: 100%;
+  text-align: center;
 }
 
 .empty-note {

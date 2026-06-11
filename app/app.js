@@ -283,20 +283,27 @@ function buildShell(mainContent) {
 function buildEntryView() {
   const title = state.lang === "ar" ? "تتبّع طلب الإسكان" : "Track your housing request";
   const sub = state.lang === "ar"
-    ? "أدخل رقم الطلب لعرض حالة طلبك المباشرة. لا يتم عرض أي حالة تجريبية في هذا التطبيق."
-    : "Enter an application ID to view the live status of your request. This app does not show demo cases by default.";
+    ? "ابدأ طلباً ذكياً جديداً أو أدخل رقم طلب قائم لعرض حالته المباشرة. لا يتم عرض أي حالة تجريبية في هذا التطبيق."
+    : "Start a new smart request or enter an existing application ID to view the live case status. This app does not show demo cases by default.";
   const trackLabel = state.lang === "ar" ? "رقم الطلب" : "Application ID";
   const placeholder = "APP-000001";
   const trackBtn = state.lang === "ar" ? "تتبع الطلب" : "Track request";
-  const startBtn = state.lang === "ar" ? "بدء طلب جديد" : "Start new request";
+  const startBtn = state.lang === "ar" ? "ابدأ الطلب الذكي" : "Start Smart Request";
+  const serviceBtn = state.lang === "ar" ? "صفحة الخدمة" : "Service page";
+  const trustBtn = state.lang === "ar" ? "TrustGate" : "TrustGate";
   const note = state.lang === "ar"
-    ? "تظهر بيانات الطلب بعد إرساله عبر خدمة إعادة جدولة متأخرات الإسكان."
-    : "Case data appears here after submission through the Housing Arrears service.";
+    ? "تظهر بيانات الطلب بعد إرساله عبر التطبيق أو خدمة إعادة جدولة متأخرات الإسكان."
+    : "Case data appears here after submission through the app or the Housing Arrears service.";
   return `
     <section class="empty-state-card">
       <div class="empty-kicker">${state.lang === "ar" ? "بوابة الطلبات" : "Case Cockpit"}</div>
       <h1>${title}</h1>
       <p>${sub}</p>
+      <div class="entry-action-grid">
+        <a class="start-link" href="/app/wizard.html?lang=${state.lang}">${startBtn}</a>
+        <a class="secondary-action entry-link" href="/customer/housing-arrears/?lang=${state.lang}">${serviceBtn}</a>
+        <a class="secondary-action entry-link" href="https://trustgate.sahlabs.me" target="_blank" rel="noopener">${trustBtn}</a>
+      </div>
       <form class="track-form" id="trackForm">
         <label for="trackApplicationId">${trackLabel}</label>
         <div class="track-row">
@@ -304,7 +311,6 @@ function buildEntryView() {
           <button type="submit">${trackBtn}</button>
         </div>
       </form>
-      <a class="start-link" href="/customer/housing-arrears/?lang=${state.lang}">${startBtn}</a>
       <p class="empty-note">${note}</p>
     </section>
   `;
