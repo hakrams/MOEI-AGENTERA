@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>التحقق من ختم الاعتماد</title>
+    <link rel="stylesheet" href="/platform.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="uae-strip" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <header class="site-header">
+      <div class="brand-row">
+        <div class="emblem" aria-hidden="true" data-copy="brandMark"></div>
+        <div>
+          <strong data-copy="country"></strong>
+          <span data-copy="ministry"></span>
+        </div>
+      </div>
+      <button id="languageToggle" class="language-button" type="button" data-copy="toggle"></button>
+    </header>
+    <main>
+      <div class="wayfinding">
+        <a href="/" data-lang-link data-copy="platformHome"></a>
+      </div>
+
+      <section class="verify-hero">
+        <p class="kicker" data-verify-copy="eyebrow"></p>
+        <h1 data-verify-copy="title"></h1>
+        <p data-verify-copy="intro"></p>
+      </section>
+
+      <section class="verify-layout">
+        <article class="verify-panel" id="verificationPanel"></article>
+        <aside class="verify-panel">
+          <h2 data-verify-copy="howTitle"></h2>
+          <ol id="verificationSteps"></ol>
+        </aside>
+      </section>
+    </main>
+
+    <script src="/platform.js"></script>
+    <script src="/challenge-1/shared/mock-data/cases.js"></script>
+    <script src="/challenge-1/shared/workflow.js"></script>
+    <script src="./verify.js"></script>
+  </body>
+</html>

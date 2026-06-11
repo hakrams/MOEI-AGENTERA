@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/audit-event.schema.json",
+  "title": "MOEI Audit Event",
+  "type": "object",
+  "required": ["contractVersion", "id", "at", "actor", "action", "status", "requiresHumanApproval", "source"],
+  "properties": {
+    "contractVersion": { "const": "audit-event.v1" },
+    "id": { "type": "string" },
+    "at": { "type": "string", "format": "date-time" },
+    "actor": {
+      "type": "string",
+      "enum": ["customer", "system", "coded-worker", "ai-specialist", "officer", "supervisor"]
+    },
+    "action": { "type": "string", "minLength": 1 },
+    "actionAr": { "type": "string" },
+    "status": { "type": "string" },
+    "requiresHumanApproval": { "type": "boolean" },
+    "source": { "type": "string" },
+    "evidenceRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

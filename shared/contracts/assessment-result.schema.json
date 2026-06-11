@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/assessment-result.schema.json",
+  "title": "MOEI Assessment Result",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "caseId",
+    "applicationStatus",
+    "decisionStage",
+    "recommendation",
+    "citizenFacingStatus",
+    "citizenFacingStatusAr",
+    "officerFacingSummary",
+    "officerFacingSummaryAr",
+    "trustGateActionRequired",
+    "auditSummary",
+    "financialStudy"
+  ],
+  "properties": {
+    "contractVersion": { "const": "assessment-result.v1" },
+    "caseId": { "type": "string", "minLength": 1 },
+    "applicationStatus": {
+      "type": "string",
+      "enum": ["complete", "incomplete"]
+    },
+    "decisionStage": {
+      "type": "string",
+      "enum": ["recommended", "needs_documents", "rejected_active_request", "human_review_required", "ready_for_trustgate"]
+    },
+    "recommendation": {
+      "type": "string",
+      "enum": [
+        "approve_recommendation",
+        "request_documents",
+        "reject_due_active_request",
+        "refer_human_review",
+        "ready_for_trustgate"
+      ]
+    },
+    "citizenFacingStatus": { "type": "string" },
+    "citizenFacingStatusAr": { "type": "string" },
+    "officerFacingSummary": { "type": "string" },
+    "officerFacingSummaryAr": { "type": "string" },
+    "trustGateActionRequired": { "type": "boolean" },
+    "auditSummary": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "financialStudy": { "type": "object" }
+  },
+  "additionalProperties": true
+}

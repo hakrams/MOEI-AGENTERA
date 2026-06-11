@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arrearsflow-customer-account.schema.json",
+  "title": "ArrearsFlow Customer Account",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "accountId",
+    "status",
+    "origin",
+    "profile",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "arrearsflow-customer-account.v1"
+    },
+    "accountId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "manual_created_pending_trustgate",
+        "verified_by_trustgate"
+      ]
+    },
+    "origin": {
+      "type": "string",
+      "enum": [
+        "ministry-account",
+        "trustgate-transfer"
+      ]
+    },
+    "identityProvider": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "object"
+    },
+    "identityLinkEvents": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

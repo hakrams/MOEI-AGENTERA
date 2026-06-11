@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/status-transition.schema.json",
+  "title": "MOEI Status Transition",
+  "type": "object",
+  "required": ["contractVersion", "caseId", "from", "to", "actor", "at", "requiresHumanApproval"],
+  "properties": {
+    "contractVersion": { "const": "status-transition.v1" },
+    "caseId": { "type": "string" },
+    "from": { "type": "string" },
+    "to": { "type": "string" },
+    "actor": { "type": "string" },
+    "at": { "type": "string", "format": "date-time" },
+    "reason": { "type": "string" },
+    "reasonAr": { "type": "string" },
+    "requiresHumanApproval": { "type": "boolean" },
+    "auditEventId": { "type": "string" }
+  },
+  "additionalProperties": true
+}

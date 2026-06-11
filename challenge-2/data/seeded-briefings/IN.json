@@ -1,0 +1,65 @@
+{
+  "briefingId": "BRIEF-IN-DEMO-2026",
+  "countryCode": "IN",
+  "countryName": "India",
+  "countryNameAr": "الهند",
+  "generatedAt": "2026-06-07T09:00:00.000Z",
+  "llmSource": "claude",
+  "orchestratorSteps": [
+    { "step": 1, "label": "Data Retrieved", "detail": "India — 2 opportunities, 1 risk factor" },
+    { "step": 2, "label": "Capacity Analysed", "detail": "Major economy ($3,730B GDP, 6.8% growth), Deep trade ($85B bilateral), Fossil-dependent (transition opportunity)" },
+    { "step": 3, "label": "Opportunities Ranked", "detail": "Top: Solar Energy Technology Partnership ($5B over 5 years)" },
+    { "step": 4, "label": "Brief Generated", "detail": "Source: claude — 400-word strategic brief produced" },
+    { "step": 5, "label": "Source Guard Complete", "detail": "Trust score: 94% | Flags: 0 — all claims verified against source data" }
+  ],
+  "brief": {
+    "executiveSummary": "India and the UAE hold a Comprehensive Strategic Partnership since 2017, underpinned by $85B in bilateral trade — making India the UAE's single largest trading partner globally. With 3.5 million Indians resident in the UAE, a CEPA in force since 2022, and digital payments integration (UPI–AANI) accelerating commercial flows, the relationship is structurally deeper than any other bilateral partnership in the UAE's portfolio.",
+    "strategicContext": "India's scale creates a unique set of opportunities and dependencies for UAE foreign economic policy. As the world's most populous nation with 6.8% GDP growth, India represents both a high-absorption market and a critical supply chain partner across pharmaceuticals, food, and technology services. The energy transition opportunity is substantial: India's 500GW renewable target by 2030 requires $500B in investment, positioning Masdar and ADNOC as natural partners for Rajasthan solar parks and offshore projects. The UPI-AANI digital bridge represents a strategic infrastructure investment that will facilitate billions in future trade settlement at near-zero friction, directly supporting UAE's ADGM-driven FinTech ambitions.",
+    "topOpportunities": [
+      {
+        "title": "Solar Energy Technology Partnership",
+        "value": "$5B over 5 years",
+        "priority": "High",
+        "insight": "India's 500GW solar target by 2030 creates a capital-absorbing opportunity. Masdar and ADNOC co-investment with NTPC and SECI in Rajasthan solar parks is at active MOU stage — UAE track record in NEOM and Barakah lends credibility competing investors cannot match."
+      },
+      {
+        "title": "Pharmaceutical Supply Chain Security",
+        "value": "$800M over 3 years",
+        "priority": "Medium",
+        "insight": "India supplies 30% of UAE pharmaceutical imports. A UAE Health Authority–India MoHFW G2G MOU would eliminate intermediary margins and ensure supply continuity — critical post-COVID vulnerability management."
+      }
+    ],
+    "keyRisks": [
+      {
+        "category": "Geopolitical",
+        "risk": "Periodic India-Pakistan border tensions on the Line of Control create regional uncertainty that requires careful diplomatic navigation given the UAE's historically neutral brokerage role with both nations.",
+        "mitigation": "Maintain constructive engagement protocols; frame all bilateral agreements in purely economic terms to avoid political entanglement"
+      }
+    ],
+    "talkingPoints": [
+      "CEPA utilization rate: assess whether the 2022 CEPA has reached its 5-year growth potential and identify remaining non-tariff barriers limiting UAE exports to the Indian market.",
+      "Masdar solar co-investment in Rajasthan: advance discussions with NTPC and SECI — India's $500B renewable gap is the single largest capital deployment opportunity available to Masdar globally.",
+      "Pharmaceutical supply agreement: finalize UAE Health Authority–MoHFW G2G framework to lock in $800M supply security for UAE's pharmaceutical import requirements.",
+      "UPI–AANI digital payments bridge: accelerate interoperability roadmap — removing FX friction on UAE-India remittances will boost the $85B bilateral trade relationship and directly support UAE's FinTech leadership narrative.",
+      "India food export continuity: secure written commitments from Ministry of Agriculture on maintaining UAE priority status for onion, wheat, and rice exports given historical export ban incidents."
+    ],
+    "closingRecommendation": "Prioritize the Masdar-NTPC solar partnership framework as the highest-value deliverable from this meeting — it positions the UAE as India's preferred clean energy co-investor at scale and deepens the strategic partnership beyond trade into a long-term infrastructure relationship. Simultaneously finalize the pharmaceutical G2G MOU as a quick-win that demonstrates CEPA's tangible benefit to UAE health security."
+  },
+  "sourceGuard": {
+    "verified": true,
+    "trustScore": 94,
+    "verifiedClaimsCount": 11,
+    "totalClaimsChecked": 11,
+    "flags": [],
+    "dataConfidence": "High",
+    "lastVerifiedAt": "2026-06-01"
+  },
+  "rawCountrySummary": {
+    "gdpBn": 3730,
+    "gdpGrowthPct": 6.8,
+    "bilateralTradeUsd": 85000000000,
+    "opportunityCount": 2,
+    "riskCount": 1,
+    "dataConfidence": "High"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/document-recognition-result.schema.json",
+  "title": "MOEI Document Recognition Result",
+  "type": "object",
+  "required": ["contractVersion", "status", "customerStatus", "decision", "confidence", "aiUsed", "document"],
+  "properties": {
+    "contractVersion": { "const": "document-recognition-result.v1" },
+    "status": {
+      "type": "string",
+      "enum": ["blocked_missing_document", "local_review_complete", "api_review_complete", "api_review_failed"]
+    },
+    "customerStatus": {
+      "type": "string",
+      "enum": ["missing", "needs_stamp", "unreadable", "stale", "mismatch", "salary_conflict", "date_mismatch", "passed"]
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["needs_customer_action", "accepted_for_gateway", "manual_review_needed"]
+    },
+    "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "aiUsed": { "type": "boolean" },
+    "aiProvider": { "type": ["string", "null"] },
+    "reviewMode": { "type": "string" },
+    "checkedAt": { "type": "string" },
+    "document": {
+      "type": "object",
+      "required": ["key", "label", "arLabel", "checks"],
+      "properties": {
+        "key": { "type": "string" },
+        "label": { "type": "string" },
+        "arLabel": { "type": "string" },
+        "file": { "type": ["object", "null"] },
+        "checks": {
+          "type": "array",
+          "items": { "type": "object", "additionalProperties": true }
+        },
+        "customerMessage": { "type": "string" },
+        "customerMessageAr": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

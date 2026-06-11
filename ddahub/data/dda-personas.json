@@ -1,0 +1,324 @@
+[
+  {
+    "ddaPersonaId": "DDA-PER-0001",
+    "scenarioKey": "normal_clean",
+    "label": "Normal clean case",
+    "linked": false,
+    "linkedTrustGateId": null,
+    "linkedEmiratesId": null,
+    "lockStatus": "available",
+    "financialProfile": {
+      "source": "mock_financial_api",
+      "financialApiAvailable": true,
+      "financialApiConsistency": "consistent",
+      "grossSalary": 30000,
+      "netSalary": 25000,
+      "monthlyObligations": 8000,
+      "obligationsRate": 0.2667,
+      "incomeStable": true,
+      "incomeTrend": "stable",
+      "currentDeductionAmount": 1983,
+      "currentDeductionRate": 0.0661,
+      "bankName": "Mock UAE Bank",
+      "bankStatementRequired": false,
+      "bankStatementReason": "Financial API data available and consistent."
+    },
+    "ddaMandate": {
+      "mandateReference": "DDA-2026-00001",
+      "ddaStatus": "active",
+      "signatureStatus": "signed",
+      "activationStatus": "active",
+      "manualTransferRequired": false,
+      "requiredAction": null,
+      "lastUpdatedAt": "2026-06-11T00:00:00+04:00"
+    },
+    "riskSignals": {
+      "highObligations": false,
+      "unstableIncome": false,
+      "missingFinancialApi": false,
+      "manualReviewSuggested": false
+    }
+  },
+  {
+    "ddaPersonaId": "DDA-PER-0002",
+    "scenarioKey": "missing_dda",
+    "label": "Missing DDA",
+    "linked": false,
+    "linkedTrustGateId": null,
+    "linkedEmiratesId": null,
+    "lockStatus": "available",
+    "financialProfile": {
+      "source": "mock_financial_api",
+      "financialApiAvailable": true,
+      "financialApiConsistency": "consistent",
+      "grossSalary": 28000,
+      "netSalary": 23200,
+      "monthlyObligations": 7000,
+      "obligationsRate": 0.25,
+      "incomeStable": true,
+      "incomeTrend": "stable",
+      "currentDeductionAmount": 0,
+      "currentDeductionRate": 0,
+      "bankName": "Mock UAE Bank",
+      "bankStatementRequired": false,
+      "bankStatementReason": "Financial API data available, but DDA mandate is not signed."
+    },
+    "ddaMandate": {
+      "mandateReference": null,
+      "ddaStatus": "missing",
+      "signatureStatus": "not_signed",
+      "activationStatus": "blocked",
+      "manualTransferRequired": false,
+      "requiredAction": "sign_dda",
+      "lastUpdatedAt": "2026-06-11T00:00:00+04:00"
+    },
+    "riskSignals": {
+      "highObligations": false,
+      "unstableIncome": false,
+      "missingFinancialApi": false,
+      "manualReviewSuggested": false
+    }
+  },
+  {
+    "ddaPersonaId": "DDA-PER-0003",
+    "scenarioKey": "pending_signature",
+    "label": "Pending DDA signature",
+    "linked": false,
+    "linkedTrustGateId": null,
+    "linkedEmiratesId": null,
+    "lockStatus": "available",
+    "financialProfile": {
+      "source": "mock_financial_api",
+      "financialApiAvailable": true,
+      "financialApiConsistency": "consistent",
+      "grossSalary": 22000,
+      "netSalary": 18500,
+      "monthlyObligations": 5500,
+      "obligationsRate": 0.25,
+      "incomeStable": true,
+      "incomeTrend": "stable",
+      "currentDeductionAmount": 1100,
+      "currentDeductionRate": 0.05,
+      "bankName": "Mock UAE Bank",
+      "bankStatementRequired": false,
+      "bankStatementReason": "Financial API data available; signature is pending."
+    },
+    "ddaMandate": {
+      "mandateReference": "DDA-2026-00003",
+      "ddaStatus": "pending_signature",
+      "signatureStatus": "pending",
+      "activationStatus": "pending",
+      "manualTransferRequired": false,
+      "requiredAction": "complete_signature",
+      "lastUpdatedAt": "2026-06-11T00:00:00+04:00"
+    },
+    "riskSignals": {
+      "highObligations": false,
+      "unstableIncome": false,
+      "missingFinancialApi": false,
+      "manualReviewSuggested": false
+    }
+  },
+  {
+    "ddaPersonaId": "DDA-PER-0004",
+    "scenarioKey": "high_obligations",
+    "label": "High obligations",
+    "linked": false,
+    "linkedTrustGateId": null,
+    "linkedEmiratesId": null,
+    "lockStatus": "available",
+    "financialProfile": {
+      "source": "mock_financial_api",
+      "financialApiAvailable": true,
+      "financialApiConsistency": "consistent",
+      "grossSalary": 25000,
+      "netSalary": 20500,
+      "monthlyObligations": 16500,
+      "obligationsRate": 0.66,
+      "incomeStable": true,
+      "incomeTrend": "stable",
+      "currentDeductionAmount": 1653,
+      "currentDeductionRate": 0.0661,
+      "bankName": "Mock UAE Bank",
+      "bankStatementRequired": false,
+      "bankStatementReason": "Financial API data available; obligations ratio is high."
+    },
+    "ddaMandate": {
+      "mandateReference": "DDA-2026-00004",
+      "ddaStatus": "active",
+      "signatureStatus": "signed",
+      "activationStatus": "active",
+      "manualTransferRequired": false,
+      "requiredAction": null,
+      "lastUpdatedAt": "2026-06-11T00:00:00+04:00"
+    },
+    "riskSignals": {
+      "highObligations": true,
+      "unstableIncome": false,
+      "missingFinancialApi": false,
+      "manualReviewSuggested": true
+    }
+  },
+  {
+    "ddaPersonaId": "DDA-PER-0005",
+    "scenarioKey": "job_loss",
+    "label": "Job loss / stopped income",
+    "linked": false,
+    "linkedTrustGateId": null,
+    "linkedEmiratesId": null,
+    "lockStatus": "available",
+    "financialProfile": {
+      "source": "mock_financial_api",
+      "financialApiAvailable": true,
+      "financialApiConsistency": "partial",
+      "grossSalary": 0,
+      "previousGrossSalary": 26000,
+      "netSalary": 0,
+      "monthlyObligations": 5200,
+      "obligationsRate": 0,
+      "incomeStable": false,
+      "incomeTrend": "stopped",
+      "currentDeductionAmount": 0,
+      "currentDeductionRate": 0,
+      "bankName": "Mock UAE Bank",
+      "bankStatementRequired": true,
+      "bankStatementReason": "Income stopped; bank evidence and termination evidence are required."
+    },
+    "ddaMandate": {
+      "mandateReference": "DDA-2026-00005",
+      "ddaStatus": "suspended",
+      "signatureStatus": "signed",
+      "activationStatus": "blocked",
+      "manualTransferRequired": false,
+      "requiredAction": "human_review_income_stopped",
+      "lastUpdatedAt": "2026-06-11T00:00:00+04:00"
+    },
+    "riskSignals": {
+      "highObligations": false,
+      "unstableIncome": true,
+      "missingFinancialApi": false,
+      "manualReviewSuggested": true
+    }
+  },
+  {
+    "ddaPersonaId": "DDA-PER-0006",
+    "scenarioKey": "medical_temporary",
+    "label": "Medical or temporary circumstance",
+    "linked": false,
+    "linkedTrustGateId": null,
+    "linkedEmiratesId": null,
+    "lockStatus": "available",
+    "financialProfile": {
+      "source": "mock_financial_api",
+      "financialApiAvailable": true,
+      "financialApiConsistency": "consistent",
+      "grossSalary": 32000,
+      "netSalary": 26600,
+      "monthlyObligations": 9000,
+      "obligationsRate": 0.2813,
+      "incomeStable": true,
+      "incomeTrend": "stable",
+      "currentDeductionAmount": 2115,
+      "currentDeductionRate": 0.0661,
+      "temporaryCircumstance": true,
+      "bankName": "Mock UAE Bank",
+      "bankStatementRequired": false,
+      "bankStatementReason": "Financial API data available; medical/temporary evidence controls treatment."
+    },
+    "ddaMandate": {
+      "mandateReference": "DDA-2026-00006",
+      "ddaStatus": "active",
+      "signatureStatus": "signed",
+      "activationStatus": "active",
+      "manualTransferRequired": false,
+      "requiredAction": null,
+      "lastUpdatedAt": "2026-06-11T00:00:00+04:00"
+    },
+    "riskSignals": {
+      "highObligations": false,
+      "unstableIncome": false,
+      "missingFinancialApi": false,
+      "manualReviewSuggested": true
+    }
+  },
+  {
+    "ddaPersonaId": "DDA-PER-0007",
+    "scenarioKey": "financial_api_unavailable",
+    "label": "Financial API unavailable",
+    "linked": false,
+    "linkedTrustGateId": null,
+    "linkedEmiratesId": null,
+    "lockStatus": "available",
+    "financialProfile": {
+      "source": "mock_financial_api",
+      "financialApiAvailable": false,
+      "financialApiConsistency": "unavailable",
+      "grossSalary": 27000,
+      "netSalary": 22400,
+      "monthlyObligations": 6200,
+      "obligationsRate": 0.2296,
+      "incomeStable": true,
+      "incomeTrend": "unknown",
+      "currentDeductionAmount": 1785,
+      "currentDeductionRate": 0.0661,
+      "bankName": "Mock UAE Bank",
+      "bankStatementRequired": true,
+      "bankStatementReason": "Financial API unavailable; bank statement is required."
+    },
+    "ddaMandate": {
+      "mandateReference": "DDA-2026-00007",
+      "ddaStatus": "active",
+      "signatureStatus": "signed",
+      "activationStatus": "active",
+      "manualTransferRequired": false,
+      "requiredAction": null,
+      "lastUpdatedAt": "2026-06-11T00:00:00+04:00"
+    },
+    "riskSignals": {
+      "highObligations": false,
+      "unstableIncome": false,
+      "missingFinancialApi": true,
+      "manualReviewSuggested": true
+    }
+  },
+  {
+    "ddaPersonaId": "DDA-PER-0008",
+    "scenarioKey": "near_cap",
+    "label": "Current deduction near cap",
+    "linked": false,
+    "linkedTrustGateId": null,
+    "linkedEmiratesId": null,
+    "lockStatus": "available",
+    "financialProfile": {
+      "source": "mock_financial_api",
+      "financialApiAvailable": true,
+      "financialApiConsistency": "consistent",
+      "grossSalary": 30000,
+      "netSalary": 24800,
+      "monthlyObligations": 7200,
+      "obligationsRate": 0.24,
+      "incomeStable": true,
+      "incomeTrend": "stable",
+      "currentDeductionAmount": 5700,
+      "currentDeductionRate": 0.19,
+      "bankName": "Mock UAE Bank",
+      "bankStatementRequired": false,
+      "bankStatementReason": "Financial API data available; current deduction is already near the 20% cap."
+    },
+    "ddaMandate": {
+      "mandateReference": "DDA-2026-00008",
+      "ddaStatus": "active",
+      "signatureStatus": "signed",
+      "activationStatus": "active",
+      "manualTransferRequired": false,
+      "requiredAction": null,
+      "lastUpdatedAt": "2026-06-11T00:00:00+04:00"
+    },
+    "riskSignals": {
+      "highObligations": false,
+      "unstableIncome": false,
+      "missingFinancialApi": false,
+      "manualReviewSuggested": true
+    }
+  }
+]

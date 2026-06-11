@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/document-completeness.schema.json",
+  "title": "MOEI Document Completeness Result",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "caseId",
+    "checkedAt",
+    "requiredDocuments",
+    "submittedDocuments",
+    "missingDocuments",
+    "invalidDocuments",
+    "documentCompletenessStatus",
+    "correctionRequired",
+    "correctionMessage",
+    "correctionMessageAr"
+  ],
+  "properties": {
+    "contractVersion": { "const": "document-completeness.v1" },
+    "caseId": { "type": "string", "minLength": 1 },
+    "checkedAt": { "type": "string", "format": "date-time" },
+    "requiredDocuments": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "submittedDocuments": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "missingDocuments": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "invalidDocuments": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "documentCompletenessStatus": {
+      "type": "string",
+      "enum": ["complete", "incomplete", "needs_correction"]
+    },
+    "correctionRequired": { "type": "boolean" },
+    "correctionMessage": { "type": "string" },
+    "correctionMessageAr": { "type": "string" }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,62 @@
+{
+  "description": "Structured output returned by every model worker. Validated by output-guard-service.js before any response is sent.",
+  "variants": {
+    "input_normalize": {
+      "description": "Output of input normalizer — GPT-4o-mini normalizing raw customer message",
+      "fields": {
+        "intent": { "type": "string", "example": "track_case", "values": ["track_case", "document_check", "document_received_check", "timeline_inquiry", "complaint", "new_request", "general_faq", "handoff", "unknown"] },
+        "language": { "type": "enum", "values": ["ar", "en"] },
+        "sentiment": { "type": "enum", "values": ["positive", "neutral", "frustrated", "angry", "urgent"] },
+        "entities": { "type": "object", "example": { "serviceType": "housing", "documentType": "salary_certificate" } },
+        "confidence": { "type": "number", "min": 0, "max": 1 }
+      }
+    },
+    "output_humanize": {
+      "description": "Output of output humanizer — GPT-4o-mini reshaping raw facts into warm human tone",
+      "fields": {
+        "language": { "type": "enum", "values": ["ar", "en"] },
+        "customerReply": { "type": "string", "note": "Warm, professional, human-toned response ready to send" },
+        "factsPreserved": { "type": "boolean", "note": "true = model did not add or change any facts" },
+        "toneApplied": { "type": "string", "example": "professional_warm_arabic" }
+      }
+    },
+    "customer_reply": {
+      "description": "Output of OpenAI customer worker for unresolvable cases",
+      "fields": {
+        "language": { "type": "enum", "values": ["ar", "en"] },
+        "intent": { "type": "string" },
+        "customerReply": { "type": "string" },
+        "nextBestAction": { "type": "string" },
+        "requiresHuman": { "type": "boolean" },
+        "caseStatusUsed": { "type": "string", "note": "Must match brain.challenge1HousingContext.applicationStatus" },
+        "promisesMade": { "type": "array", "items": "string", "note": "Must be empty — no promises allowed" },
+        "forbiddenClaimDetected": { "type": "boolean", "note": "true triggers output guard rejection" }
+      }
+    },
+    "officer_copilot": {
+      "description": "Output of Claude officer co-pilot worker",
+      "fields": {
+        "caseSummary": { "type": "string" },
+        "customerNeed": { "type": "string" },
+        "riskAssessment": {
+          "sentimentRisk": { "type": "enum", "values": ["low", "medium", "high"] },
+          "slaRisk": { "type": "enum", "values": ["low", "medium", "high"] },
+          "escalationRisk": { "type": "enum", "values": ["low", "medium", "high"] },
+          "reasons": { "type": "array", "items": "string" }
+        },
+        "recommendedNextAction": { "type": "string" },
+        "recommendedOfficerResponse": { "type": "string" },
+        "missingInformation": { "type": "array", "items": "string" },
+        "mustNotPromise": { "type": "array", "items": "string" },
+        "confidence": { "type": "number", "min": 0, "max": 1 }
+      }
+    }
+  },
+  "guardRules": [
+    "forbiddenClaimDetected must be false before any customer reply is sent",
+    "caseStatusUsed must match the actual ledger status — not invented",
+    "promisesMade must be empty array",
+    "requiresHuman=true routes to officer queue, never sent directly to customer as a promise",
+    "factsPreserved must be true on output_humanize responses"
+  ]
+}

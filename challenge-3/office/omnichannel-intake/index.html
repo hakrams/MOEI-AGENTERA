@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OneCX — مركز الموظف 360° | MOEI</title>
+    <link rel="stylesheet" href="/platform.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="/runtime-config.js" defer></script>
+    <script src="/shared/trustgate-workspace-auth.js" defer></script>
+  </head>
+  <body>
+    <div style="background:#1a3a6b;color:#fff;font-size:11px;font-weight:600;text-align:center;padding:5px 12px;letter-spacing:0.5px;position:sticky;top:0;z-index:9999" aria-label="Simulation environment notice">🔵 SIMULATED — بيئة تجريبية · Simulation Environment — MOEI Hackathon Demo</div>
+    <div class="uae-strip" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <header class="site-header">
+      <div class="brand-row">
+        <div class="emblem" aria-hidden="true">🇦🇪</div>
+        <div>
+          <strong id="brandCountry">الإمارات العربية المتحدة</strong>
+          <span id="brandMinistry">OneCX — مركز الموظف 360°</span>
+        </div>
+      </div>
+      <div class="header-tools">
+        <a href="/office/" class="ghost-button small" style="text-decoration:none" id="backToOffice">← Officer Workspace</a>
+        <!-- Live KPI chips -->
+        <div class="kpi-chips">
+          <div class="kpi-chip">
+            <span id="kpiTotal">0</span>
+            <span id="kpiTotalLabel" class="kpi-label">تفاعل</span>
+          </div>
+          <div class="kpi-chip danger">
+            <span id="kpiEscalated">0</span>
+            <span id="kpiEscalatedLabel" class="kpi-label">مصعّد</span>
+          </div>
+          <div class="kpi-chip success">
+            <span id="kpiDeterministic">0</span>
+            <span id="kpiDeterministicLabel" class="kpi-label">حتمي</span>
+          </div>
+        </div>
+        <span id="officerBadge" class="officer-badge">موظف متقدم</span>
+        <button id="refreshBtn" class="ghost-button" type="button">تحديث</button>
+        <button id="langToggle" class="language-button" type="button">EN</button>
+      </div>
+    </header>
+
+    <div class="workspace">
+
+      <!-- ═══ LEFT: Escalation Queue ═══ -->
+      <aside class="queue-sidebar">
+        <div class="sidebar-header">
+          <h2 id="queueTitle">قائمة التصعيد
+            <span id="queueCount" class="count-badge">0</span>
+          </h2>
+          <button id="viewAllBtn" class="ghost-button small" type="button" id="viewAllLabel">الكل</button>
+        </div>
+        <div id="queueList" class="queue-list">
+          <p id="queueEmpty" class="empty-state small">جاري التحميل...</p>
+        </div>
+      </aside>
+
+      <!-- ═══ RIGHT: Customer 360 ═══ -->
+      <main class="customer360">
+
+        <!-- Empty state (no customer selected) -->
+        <div id="emptyState360" class="empty360">
+          <div class="empty360-icon">👥</div>
+          <p id="emptyState360Text">اختر حالة من القائمة لعرض ملف المتعامل الكامل</p>
+          <div class="live-feed-section">
+            <div class="section-header-row">
+              <h3 id="liveFeedTitle">آخر التفاعلات — جميع المتعاملين</h3>
+            </div>
+            <div id="liveFeed" class="live-feed">
+              <p class="empty-state small">جاري التحميل...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customer 360 view (shown when customer selected) -->
+        <div id="view360" class="view360" hidden>
+
+          <!-- Profile strip -->
+          <div class="profile-strip">
+            <div class="profile-main">
+              <div class="profile-avatar" id="profileAvatar">👤</div>
+              <div class="profile-info">
+                <span class="profile-name" id="profileName">—</span>
+                <span class="profile-id" id="profileId">—</span>
+              </div>
+            </div>
+            <div class="profile-meta">
+              <div class="channel-chips-row" id="channelChipsRow"></div>
+              <div class="sentiment-badge" id="sentimentBadge"></div>
+            </div>
+            <button id="closeViewBtn" class="ghost-button small close-btn" type="button">✕</button>
+          </div>
+
+          <!-- 360 grid: timeline left, co-pilot right -->
+          <div class="view360-grid">
+
+            <!-- Channel timeline -->
+            <section class="timeline-section">
+              <div class="section-header-row">
+                <h3 id="customerTimelineTitle">مسار المتعامل عبر القنوات</h3>
+                <span class="section-sub" id="customerTimelineSub">جميع القنوات</span>
+              </div>
+              <div id="customerTimeline" class="customer-timeline">
+                <p class="empty-state small">جاري التحميل...</p>
+              </div>
+            </section>
+
+            <!-- AI Co-Pilot -->
+            <section class="copilot-section-panel">
+              <div class="section-header-row">
+                <h3 id="copilotTitle">المساعد الذكي للموظف</h3>
+                <span class="model-tag">Claude AI</span>
+              </div>
+
+              <div id="copilotTrigger" class="copilot-trigger">
+                <div class="copilot-focus-row">
+                  <label><input type="radio" name="copilotFocus" value="full" checked> <span id="focusFullLabel">تحليل كامل</span></label>
+                  <label><input type="radio" name="copilotFocus" value="risk"> <span id="focusRiskLabel">المخاطر فقط</span></label>
+                  <label><input type="radio" name="copilotFocus" value="reply"> <span id="focusReplyLabel">رد مقترح فقط</span></label>
+                </div>
+                <button id="runCopilotBtn" class="run-copilot-btn" type="button">🤖 <span id="runCopilotLabel">تحليل بالذكاء الاصطناعي</span></button>
+              </div>
+
+              <div id="copilotLoading" class="copilot-loading" hidden>
+                <div class="spinner"></div>
+                <span id="copilotLoadingText">يحلل الحالة بالذكاء الاصطناعي...</span>
+              </div>
+
+              <div id="copilotError" class="copilot-error" hidden></div>
+
+              <div id="copilotResult" class="copilot-result" hidden></div>
+            </section>
+
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

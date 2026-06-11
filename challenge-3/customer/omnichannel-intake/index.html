@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الخدمة الذكية — إعادة جدولة متأخرات الإسكان | MOEI</title>
+  <link rel="stylesheet" href="/platform.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="/runtime-config.js" defer></script>
+  <script src="/app/wizard-core.js" defer></script>
+</head>
+<body>
+
+  <!-- Simulation banner -->
+  <div class="sim-banner" aria-label="Simulation environment notice">
+    🔵 SIMULATED — بيئة تجريبية · Simulation Environment — MOEI Hackathon Demo
+  </div>
+
+  <!-- UAE gold strip -->
+  <div class="uae-strip" aria-hidden="true"></div>
+
+  <!-- ── Site header ───────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="brand-row">
+      <div class="emblem" aria-hidden="true">🇦🇪</div>
+      <div>
+        <strong id="brandCountry">الإمارات العربية المتحدة</strong>
+        <span id="brandMinistry">وزارة الطاقة والبنية التحتية</span>
+      </div>
+    </div>
+    <div class="header-tools">
+      <span id="identityBadge" class="identity-badge" hidden></span>
+      <button id="logoutBtn" class="btn-ghost-sm" type="button" hidden>
+        <span id="logoutLabel">تسجيل الخروج</span>
+      </button>
+      <button id="langToggle" class="btn-lang" type="button">EN</button>
+    </div>
+  </header>
+
+  <!-- ── Breadcrumb ────────────────────────────────────────────── -->
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <a href="/customer/" id="bcHome">الرئيسية</a>
+    <span class="bc-sep">›</span>
+    <span id="bcService">الخدمة الذكية</span>
+  </nav>
+
+  <main id="mainArea">
+
+    <!-- ══════════════ LOGIN SCREEN ══════════════ -->
+    <div id="loginScreen" class="login-screen">
+      <div class="login-card">
+        <div class="login-icon">🔗</div>
+        <h1 class="login-title" id="s1Title">OneCX</h1>
+        <p class="login-desc" id="s1Desc">سجّل دخولك للوصول إلى بوابة الخدمات الموحدة.</p>
+
+        <button id="trustgateLoginBtn" class="btn-primary login-cta" type="button">
+          <span style="font-size:18px">🔐</span>
+          <span id="trustgateLoginBtnText">تسجيل الدخول عبر TrustGate</span>
+        </button>
+        <p class="login-note" id="trustgateLoginNote">مدعوم من خدمة التحقق من الهوية · TrustGate</p>
+      </div>
+    </div>
+
+    <!-- ══════════════ PORTAL SCREEN ══════════════ -->
+    <div id="portalScreen" class="portal-screen" hidden>
+
+      <!-- Progress bar -->
+      <div class="progress-bar-wrap">
+        <div class="progress-steps" id="progressSteps">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Two-column grid -->
+      <div class="portal-grid">
+
+        <!-- ── LEFT: Wizard steps ── -->
+        <div class="wizard-col">
+          <div id="wizardBody">
+            <!-- Step content rendered by JS -->
+          </div>
+        </div>
+
+        <!-- ── RIGHT: Context panel ── -->
+        <aside class="context-col">
+
+          <!-- Identity card -->
+          <div class="ctx-card identity-ctx" id="identityCtx" hidden>
+            <div class="ctx-card-h" id="ctxIdentityTitle">هويتك الموثقة</div>
+            <div class="identity-row">
+              <div class="identity-avatar-lg">👤</div>
+              <div>
+                <p class="identity-name-lg" id="ctxName">—</p>
+                <p class="identity-id-lg" id="ctxId">—</p>
+              </div>
+            </div>
+            <div class="verified-badge" id="ctxVerifiedBadge">✓ <span id="ctxVerified">هوية موثقة</span></div>
+          </div>
+
+          <!-- Active case card -->
+          <div class="ctx-card case-ctx" id="caseCtx" hidden>
+            <div class="ctx-card-h" id="ctxCaseTitle">طلبك الحالي</div>
+            <div class="case-row">
+              <span class="case-id-sm" id="ctxCaseId">—</span>
+              <span class="case-badge" id="ctxCaseBadge">—</span>
+            </div>
+            <p class="case-service-sm" id="ctxCaseService">—</p>
+            <div id="ctxMissingDocs" class="ctx-missing" hidden>
+              <span>⚠ </span><span id="ctxMissingList">—</span>
+            </div>
+          </div>
+
+          <!-- Timeline panel -->
+          <div class="ctx-card timeline-ctx">
+            <div class="ctx-card-h">
+              <span id="ctxTimelineTitle">سجل التفاعلات</span>
+              <span class="ctx-card-sub" id="ctxTimelineSub">جميع القنوات</span>
+            </div>
+            <div id="timelineList" class="timeline-list">
+              <p class="timeline-empty" id="timelineEmpty">لا يوجد سجل بعد.</p>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

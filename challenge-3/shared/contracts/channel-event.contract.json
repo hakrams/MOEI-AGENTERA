@@ -1,0 +1,24 @@
+{
+  "description": "A single interaction event from any channel. Written to the C3 event ledger by every channel adapter.",
+  "fields": {
+    "eventId": { "type": "string", "example": "EVT-001", "generated": "by challenge3-live-store nextId" },
+    "journeyId": { "type": "string", "example": "JRN-001", "note": "One journey can span multiple channels" },
+    "customerId": { "type": "string", "example": "CUST-001", "source": "TrustGate adapter" },
+    "caseId": { "type": "string", "example": "APP-001", "source": "Challenge 1 application ID — null if no C1 case yet" },
+    "channel": { "type": "enum", "values": ["website", "whatsapp", "call_center", "mobile_app", "officer_dashboard", "system"] },
+    "direction": { "type": "enum", "values": ["inbound", "outbound", "internal"] },
+    "language": { "type": "enum", "values": ["ar", "en"] },
+    "rawMessage": { "type": "string", "note": "Exact text from customer — never modified" },
+    "normalizedIntent": { "type": "string", "note": "Set by input normalizer — null until normalized", "example": "track_case" },
+    "normalizedEntities": { "type": "object", "note": "Extracted entities from normalizer — service type, document names, etc." },
+    "sentiment": { "type": "enum", "values": ["positive", "neutral", "frustrated", "angry", "urgent"], "note": "Set by input normalizer" },
+    "deterministicAnswerUsed": { "type": "boolean", "note": "true if answer came from live store without any model call" },
+    "modelUsed": { "type": "string", "values": ["none", "gpt-4o-mini", "gpt-4o", "claude-haiku", "claude-sonnet"], "note": "none for deterministic answers" },
+    "customerReply": { "type": "string", "note": "Final response sent to customer — after output humanizer" },
+    "requiresHuman": { "type": "boolean" },
+    "escalationScore": { "type": "number", "min": 0, "max": 100 },
+    "piiClass": { "type": "enum", "values": ["none", "low", "medium", "high"] },
+    "timestamp": { "type": "string", "format": "ISO8601" }
+  },
+  "requiredFields": ["eventId", "journeyId", "customerId", "channel", "direction", "language", "timestamp"]
+}

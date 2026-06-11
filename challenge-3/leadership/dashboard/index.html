@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OneCX — لوحة القيادة | MOEI</title>
+    <link rel="stylesheet" href="/platform.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="/runtime-config.js" defer></script>
+    <script src="/shared/trustgate-workspace-auth.js" defer></script>
+  </head>
+  <body>
+    <div style="background:#1a3a6b;color:#fff;font-size:11px;font-weight:600;text-align:center;padding:5px 12px;letter-spacing:0.5px;position:sticky;top:0;z-index:9999" aria-label="Simulation environment notice">🔵 SIMULATED — بيئة تجريبية · Simulation Environment — MOEI Hackathon Demo</div>
+    <div class="uae-strip" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <header class="site-header">
+      <div class="brand-row">
+        <div class="emblem" aria-hidden="true">🇦🇪</div>
+        <div>
+          <strong id="brandCountry">الإمارات العربية المتحدة</strong>
+          <span id="brandMinistry">OneCX — لوحة قيادة الخدمات</span>
+        </div>
+      </div>
+      <div class="header-tools">
+        <a href="/office/" class="ghost-button small" style="text-decoration:none" id="backToOffice">← Officer Workspace</a>
+        <span id="lastUpdated" class="last-updated"></span>
+        <button id="refreshBtn" class="ghost-button" type="button">تحديث</button>
+        <button id="langToggle" class="language-button" type="button">EN</button>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ═══ ROW 1: Big KPI cards ═══ -->
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-icon">📊</div>
+          <div class="kpi-value" id="totalInteractions">—</div>
+          <div class="kpi-label" id="labelTotalInteractions">إجمالي التفاعلات</div>
+          <div class="kpi-sub" id="kpiLast24h"></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon">👥</div>
+          <div class="kpi-value" id="totalCustomers">—</div>
+          <div class="kpi-label" id="labelTotalCustomers">المتعاملون</div>
+        </div>
+        <div class="kpi-card danger">
+          <div class="kpi-icon">⚠️</div>
+          <div class="kpi-value" id="totalEscalated">—</div>
+          <div class="kpi-label" id="labelEscalated">حالات مصعّدة</div>
+          <div class="kpi-sub" id="escalationRate"></div>
+        </div>
+        <div class="kpi-card success">
+          <div class="kpi-icon">⚡</div>
+          <div class="kpi-value" id="deterministicRate">—</div>
+          <div class="kpi-label" id="labelDeterministic">معدل الإجابة الحتمية</div>
+          <div class="kpi-sub" id="labelDeterministicSub">بدون تكلفة نموذج</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon">⏱️</div>
+          <div class="kpi-value" id="avgDuration">—</div>
+          <div class="kpi-label" id="labelAvgDuration">متوسط وقت الاستجابة</div>
+        </div>
+      </div>
+
+      <!-- ═══ ROW 2: Charts ═══ -->
+      <div class="charts-grid">
+
+        <!-- Channel breakdown -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h2 class="chart-title" id="titleChannels">التفاعلات حسب القناة</h2>
+            <span class="chart-sub" id="subChannels">توزيع القنوات</span>
+          </div>
+          <div id="channelChart" class="bar-chart"></div>
+        </div>
+
+        <!-- Sentiment breakdown -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h2 class="chart-title" id="titleSentiment">توزيع المشاعر</h2>
+            <span class="chart-sub" id="subSentiment">من الردود الأخيرة</span>
+          </div>
+          <div id="sentimentChart" class="sentiment-chart"></div>
+        </div>
+
+        <!-- Top intents -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h2 class="chart-title" id="titleIntents">أكثر الاستفسارات</h2>
+            <span class="chart-sub" id="subIntents">حسب النوع</span>
+          </div>
+          <div id="intentChart" class="bar-chart"></div>
+        </div>
+
+        <!-- Model/cost efficiency -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h2 class="chart-title" id="titleModels">كفاءة النماذج</h2>
+            <span class="chart-sub" id="subModels">حتمي مقابل AI</span>
+          </div>
+          <div id="modelChart" class="bar-chart"></div>
+          <div class="cost-note" id="costNote"></div>
+        </div>
+
+      </div>
+
+      <!-- ═══ ROW 2.5: MOEI Historical Dataset Panel ═══ -->
+      <div class="dataset-row">
+        <div class="dataset-card">
+          <div class="dataset-header">
+            <span class="dataset-badge">📂 MOEI Official Dataset</span>
+            <span id="datasetSource" class="dataset-source">MOEI Omnichannel Dataset 2024-2025</span>
+          </div>
+          <div class="dataset-stats">
+            <div class="ds-stat">
+              <span class="ds-val" id="dsWhatsapp">300</span>
+              <span class="ds-label">WhatsApp</span>
+            </div>
+            <div class="ds-stat">
+              <span class="ds-val" id="dsVoice">400</span>
+              <span class="ds-label" id="dsVoiceLabel">Voice</span>
+            </div>
+            <div class="ds-stat">
+              <span class="ds-val" id="dsWeb">350</span>
+              <span class="ds-label">Web / App</span>
+            </div>
+            <div class="ds-stat">
+              <span class="ds-val" id="dsCrm">200</span>
+              <span class="ds-label">CRM</span>
+            </div>
+            <div class="ds-stat highlight">
+              <span class="ds-val" id="dsTotal">1,050</span>
+              <span class="ds-label" id="dsTotalLabel">Total Interactions</span>
+            </div>
+            <div class="ds-stat">
+              <span class="ds-val" id="dsCsat">2.9</span>
+              <span class="ds-label">CSAT Avg</span>
+            </div>
+            <div class="ds-stat">
+              <span class="ds-val" id="dsFcr">36%</span>
+              <span class="ds-label">FCR Rate</span>
+            </div>
+            <div class="ds-stat">
+              <span class="ds-val" id="dsEscalation">23%</span>
+              <span class="ds-label" id="dsEscLabel">Escalation Rate</span>
+            </div>
+          </div>
+          <div id="dsTopServices" class="ds-top-services"></div>
+        </div>
+      </div>
+
+      <!-- ═══ ROW 3: Risk signal + quick actions ═══ -->
+      <div class="bottom-row">
+
+        <div class="signal-card">
+          <h3 class="chart-title" id="titleRiskSignal">إشارة المخاطر</h3>
+          <div id="riskSignal" class="risk-signal-body"></div>
+        </div>
+
+        <div class="links-card">
+          <h3 class="chart-title" id="titleQuickNav">التنقل السريع</h3>
+          <div class="quick-links">
+            <a href="/office/omnichannel-intake/" class="quick-link">
+              <span>🏛️</span>
+              <span id="linkOfficer">مركز الموظف 360°</span>
+            </a>
+            <a href="/customer/omnichannel-intake/" class="quick-link">
+              <span>💬</span>
+              <span id="linkCustomer">بوابة المتعامل</span>
+            </a>
+            <a href="/office/housing-arrears/" class="quick-link">
+              <span>🏠</span>
+              <span id="linkHousing">مكتب الإسكان</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

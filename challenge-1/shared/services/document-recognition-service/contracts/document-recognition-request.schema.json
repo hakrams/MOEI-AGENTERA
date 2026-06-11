@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/document-recognition-request.schema.json",
+  "title": "MOEI Document Recognition Request",
+  "type": "object",
+  "required": ["contractVersion", "caseId", "applicantId", "serviceKey"],
+  "properties": {
+    "contractVersion": { "const": "document-recognition-request.v1" },
+    "caseId": { "type": "string" },
+    "applicantId": { "type": ["string", "null"] },
+    "serviceKey": { "type": "string" },
+    "document": {
+      "type": "object",
+      "properties": {
+        "key": { "type": "string" },
+        "label": { "type": "string" },
+        "arLabel": { "type": "string" },
+        "file": { "type": ["object", "null"] },
+        "customerNote": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "documents": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": true }
+    },
+    "requestedAt": { "type": "string" }
+  },
+  "additionalProperties": true
+}
+

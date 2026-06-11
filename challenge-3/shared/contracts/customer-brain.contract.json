@@ -1,0 +1,63 @@
+{
+  "description": "The full customer context object assembled before any model call or deterministic check. Built by customer-brain-service.js from TrustGate + C1 live stores + C3 event ledger.",
+  "fields": {
+    "identity": {
+      "description": "From TrustGate adapter",
+      "fields": {
+        "source": { "type": "string", "value": "trustgate" },
+        "customerId": { "type": "string" },
+        "displayName": { "type": "string" },
+        "maskedEmiratesId": { "type": "string", "note": "Last 4 digits only — never full ID" },
+        "phone": { "type": "string", "note": "Masked in logs — use for channel routing only" },
+        "preferredLanguage": { "type": "enum", "values": ["ar", "en"] },
+        "preferredChannel": { "type": "enum", "values": ["website", "whatsapp", "call_center", "mobile_app"] }
+      }
+    },
+    "challenge1HousingContext": {
+      "description": "Read from C1 live stores by challenge1-bridge-service.js",
+      "fields": {
+        "hasActiveHousingApplication": { "type": "boolean" },
+        "applicationId": { "type": "string", "nullable": true },
+        "applicationStatus": { "type": "string", "nullable": true, "example": "documents_required" },
+        "latestAssessmentStatus": { "type": "string", "nullable": true, "example": "waiting_for_salary_certificate" },
+        "missingDocuments": { "type": "array", "items": "string" },
+        "latestOfficerAction": { "type": "string", "nullable": true },
+        "approvalSealStatus": { "type": "string", "nullable": true, "example": "not_requested" },
+        "latestAuditSummary": { "type": "string", "nullable": true }
+      }
+    },
+    "challenge3OmnichannelContext": {
+      "description": "Read from C3 event ledger",
+      "fields": {
+        "journeyId": { "type": "string", "nullable": true },
+        "lastChannel": { "type": "string", "nullable": true },
+        "currentChannel": { "type": "string" },
+        "recentEvents": { "type": "array", "maxItems": 10, "note": "Last 10 events only — not full history" },
+        "repeatContactCount": { "type": "number" },
+        "openLoopSummary": { "type": "string", "nullable": true, "note": "Plain text: what does this customer still need?" },
+        "sentiment": { "type": "string" },
+        "escalationSignals": { "type": "array", "items": "string", "example": ["repeat_follow_up", "angry_tone"] }
+      }
+    },
+    "deterministicAnswer": {
+      "description": "Set by deterministic-answer-service.js. If available=true, no model call needed.",
+      "fields": {
+        "available": { "type": "boolean" },
+        "answerType": { "type": "string", "nullable": true, "example": "case_status" },
+        "rawFacts": { "type": "object", "nullable": true, "note": "Structured facts from live store for output humanizer" },
+        "customerMessageAr": { "type": "string", "nullable": true },
+        "customerMessageEn": { "type": "string", "nullable": true }
+      }
+    },
+    "allowedActions": {
+      "description": "Policy boundaries — injected into every model call",
+      "fields": {
+        "mayGiveStatus": { "type": "boolean" },
+        "mayRequestDocument": { "type": "boolean" },
+        "mayPromiseApproval": { "type": "boolean", "value": false, "hardRule": true },
+        "mayCloseCase": { "type": "boolean", "value": false, "hardRule": true },
+        "requiresOfficerForFinalDecision": { "type": "boolean", "value": true, "hardRule": true }
+      }
+    }
+  }
+}

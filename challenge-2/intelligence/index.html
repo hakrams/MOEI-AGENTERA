@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CountryIQ — Strategic Intelligence Platform</title>
+    <script src="/runtime-config.js"></script>
+    <script src="/shared/trustgate-workspace-auth.js"></script>
+    <style>
+      :root {
+        --navy: #0a1628;
+        --navy-mid: #112240;
+        --navy-soft: #1a325a;
+        --gold: #c9a227;
+        --gold-light: #e8c84a;
+        --teal: #0ea4bc;
+        --green: #00b87a;
+        --red: #e84545;
+        --amber: #f0a500;
+        --text: #e8edf5;
+        --muted: #8fa3c0;
+        --line: rgba(255,255,255,0.1);
+        --surface: rgba(255,255,255,0.04);
+        --surface-hover: rgba(255,255,255,0.08);
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        background: var(--navy);
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      /* TOP BAR */
+      .topbar {
+        background: var(--navy-mid);
+        border-bottom: 1px solid var(--line);
+        padding: 14px 32px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .topbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--gold) 0%, var(--teal) 100%);
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--navy);
+      }
+
+      .brand-name {
+        font-size: 20px;
+        font-weight: 700;
+        background: linear-gradient(90deg, var(--gold-light), var(--teal));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .brand-sub { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+      .topbar-right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .sim-badge {
+        background: rgba(240, 165, 0, 0.15);
+        border: 1px solid var(--amber);
+        color: var(--amber);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        text-transform: uppercase;
+      }
+
+      /* LAYOUT */
+      .app-layout {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        min-height: calc(100vh - 65px);
+      }
+
+      /* SIDEBAR */
+      .sidebar {
+        background: var(--navy-mid);
+        border-right: 1px solid var(--line);
+        padding: 24px 0;
+        overflow-y: auto;
+      }
+
+      .sidebar-section-label {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 0 20px 10px;
+      }
+
+      .country-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: background 0.15s;
+        border-left: 3px solid transparent;
+      }
+
+      .country-item:hover { background: var(--surface-hover); }
+      .country-item.active { background: var(--surface-hover); border-left-color: var(--gold); }
+
+      .country-flag {
+        width: 32px;
+        height: 24px;
+        background: var(--navy-soft);
+        border-radius: 4px;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      .country-item-info { flex: 1; min-width: 0; }
+      .country-item-name { font-size: 14px; font-weight: 600; }
+      .country-item-region { font-size: 11px; color: var(--muted); }
+      .country-item-trade { font-size: 11px; color: var(--gold); font-weight: 600; }
+
+      .search-box {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 16px 16px;
+        padding: 8px 12px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .search-box input {
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 13px;
+        width: 100%;
+        outline: none;
+      }
+
+      .search-box input::placeholder { color: var(--muted); }
+
+      /* MAIN */
+      .main-content {
+        padding: 32px;
+        overflow-y: auto;
+      }
+
+      /* WELCOME STATE */
+      .welcome-state {
+        height: 100%;
+        display: grid;
+        place-items: center;
+        text-align: center;
+      }
+
+      .welcome-state h2 { font-size: 28px; font-weight: 300; color: var(--muted); margin-bottom: 12px; }
+      .welcome-state p { color: var(--muted); font-size: 15px; }
+
+      /* LOADING STATE */
+      .loading-state {
+        display: none;
+        padding: 40px 0;
+      }
+
+      .loading-state.show { display: block; }
+
+      .orchestrator-steps {
+        display: grid;
+        gap: 12px;
+        max-width: 540px;
+      }
+
+      .orchestrator-step {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 18px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        opacity: 0.4;
+        transition: opacity 0.3s;
+      }
+
+      .orchestrator-step.active { opacity: 1; border-color: var(--teal); }
+      .orchestrator-step.done { opacity: 1; border-color: var(--green); }
+
+      .step-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--navy-soft);
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+
+      .step-icon.spin { animation: spin 1s linear infinite; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+
+      .step-label { font-size: 14px; font-weight: 600; }
+      .step-detail { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+      /* BRIEFING STATE */
+      .briefing-content { display: none; }
+      .briefing-content.show { display: block; }
+
+      .briefing-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 28px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .briefing-country-flag {
+        width: 64px;
+        height: 48px;
+        border-radius: 8px;
+        background: var(--navy-soft);
+        display: grid;
+        place-items: center;
+        font-size: 36px;
+        flex-shrink: 0;
+      }
+
+      .briefing-title { font-size: 28px; font-weight: 700; }
+      .briefing-subtitle { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+      .briefing-meta {
+        margin-top: 10px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .meta-chip {
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+      }
+
+      .meta-chip.gold { background: rgba(201,162,39,0.15); color: var(--gold-light); border: 1px solid rgba(201,162,39,0.3); }
+      .meta-chip.teal { background: rgba(14,164,188,0.15); color: var(--teal); border: 1px solid rgba(14,164,188,0.3); }
+      .meta-chip.green { background: rgba(0,184,122,0.15); color: var(--green); border: 1px solid rgba(0,184,122,0.3); }
+      .meta-chip.red { background: rgba(232,69,69,0.15); color: var(--red); border: 1px solid rgba(232,69,69,0.3); }
+
+      /* SECTIONS */
+      .section { margin-bottom: 28px; }
+
+      .section-header {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .section-header::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--line);
+      }
+
+      /* EXECUTIVE SUMMARY */
+      .exec-summary {
+        background: linear-gradient(135deg, rgba(201,162,39,0.08) 0%, rgba(14,164,188,0.05) 100%);
+        border: 1px solid rgba(201,162,39,0.2);
+        border-radius: 12px;
+        padding: 20px 24px;
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--text);
+      }
+
+      /* OPPORTUNITIES */
+      .opportunity-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 16px;
+      }
+
+      .opp-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 18px;
+        transition: border-color 0.15s, background 0.15s;
+      }
+
+      .opp-card:hover { border-color: var(--gold); background: var(--surface-hover); }
+
+      .opp-priority {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .opp-priority.high { color: var(--green); }
+      .opp-priority.medium { color: var(--amber); }
+
+      .opp-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+      .opp-value { font-size: 20px; font-weight: 800; color: var(--gold-light); margin-bottom: 8px; }
+      .opp-insight { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+      /* RISKS */
+      .risk-list { display: grid; gap: 12px; }
+
+      .risk-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 14px;
+        align-items: start;
+        padding: 14px 16px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+      }
+
+      .risk-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: rgba(232,69,69,0.15);
+        display: grid;
+        place-items: center;
+        font-size: 16px;
+      }
+
+      .risk-category { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+      .risk-text { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
+      .risk-mitigation { font-size: 12px; color: var(--green); display: flex; align-items: flex-start; gap: 6px; }
+
+      /* TALKING POINTS */
+      .talking-points { display: grid; gap: 10px; }
+
+      .talking-point {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        padding: 12px 16px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .talking-point .num {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--navy-soft);
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--teal);
+        flex-shrink: 0;
+      }
+
+      /* TRUST GUARD PANEL */
+      .trust-guard-panel {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .trust-score-ring {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 16px;
+        font-weight: 800;
+        flex-shrink: 0;
+      }
+
+      .trust-score-ring.high { background: rgba(0,184,122,0.15); color: var(--green); border: 2px solid var(--green); }
+      .trust-score-ring.medium { background: rgba(240,165,0,0.15); color: var(--amber); border: 2px solid var(--amber); }
+      .trust-score-ring.low { background: rgba(232,69,69,0.15); color: var(--red); border: 2px solid var(--red); }
+
+      .trust-info { flex: 1; }
+      .trust-label { font-size: 13px; font-weight: 700; }
+      .trust-detail { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+      .trust-flags { display: grid; gap: 6px; margin-top: 10px; }
+
+      .trust-flag-item {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 12px;
+      }
+
+      .trust-flag-item.high { background: rgba(232,69,69,0.1); border: 1px solid rgba(232,69,69,0.3); color: var(--red); }
+      .trust-flag-item.warning { background: rgba(240,165,0,0.1); border: 1px solid rgba(240,165,0,0.3); color: var(--amber); }
+
+      /* ORCHESTRATOR STEPS COMPACT */
+      .steps-bar {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+
+      .step-chip {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background: rgba(0,184,122,0.1);
+        border: 1px solid rgba(0,184,122,0.3);
+        border-radius: 20px;
+        font-size: 11px;
+        color: var(--green);
+        font-weight: 600;
+      }
+
+      /* CLOSING REC */
+      .closing-rec {
+        background: linear-gradient(135deg, rgba(14,164,188,0.1) 0%, rgba(0,184,122,0.05) 100%);
+        border: 1px solid rgba(14,164,188,0.25);
+        border-radius: 12px;
+        padding: 18px 22px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--text);
+      }
+
+      .closing-rec strong { color: var(--teal); }
+
+      /* COMPARE BUTTON */
+      .action-bar {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        height: 38px;
+        padding: 0 18px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        transition: opacity 0.15s;
+      }
+
+      .btn:hover { opacity: 0.85; }
+      .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+      .btn-primary { background: linear-gradient(135deg, var(--gold) 0%, var(--teal) 100%); color: var(--navy); }
+      .btn-outline { background: transparent; border: 1px solid var(--line); color: var(--text); }
+      .btn-ghost { background: var(--surface); color: var(--text); }
+
+      /* CHAT */
+      .chat-section { margin-top: 28px; }
+      .chat-input-row { display: flex; gap: 10px; margin-bottom: 16px; }
+      .chat-input {
+        flex: 1;
+        height: 44px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0 16px;
+        font-size: 14px;
+        color: var(--text);
+      }
+      .chat-input:focus { outline: none; border-color: var(--teal); }
+      .chat-input::placeholder { color: var(--muted); }
+
+      .chat-messages { display: grid; gap: 12px; }
+      .chat-msg {
+        padding: 12px 16px;
+        border-radius: 10px;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .chat-msg.user { background: rgba(201,162,39,0.1); border: 1px solid rgba(201,162,39,0.2); color: var(--text); }
+      .chat-msg.ai { background: var(--surface); border: 1px solid var(--line); }
+      .chat-msg .chat-meta { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .app-layout { grid-template-columns: 1fr; }
+        .sidebar { display: none; }
+        .main-content { padding: 20px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-brand">
+        <div class="brand-icon">IQ</div>
+        <div>
+          <div class="brand-name">CountryIQ</div>
+          <div class="brand-sub">Strategic Intelligence Platform — UAE MOEI</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <a href="/" style="color:var(--muted);font-size:13px;text-decoration:none;display:flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--line);border-radius:6px;transition:border-color 0.15s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--line)'">← Platform Home</a>
+        <span class="sim-badge">🔵 SIMULATED</span>
+        <button class="btn btn-outline" id="compareBtn" style="display:none">⇌ Compare Countries</button>
+      </div>
+    </header>
+
+    <div class="app-layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="search-box">
+          <span>🔍</span>
+          <input type="search" id="countrySearch" placeholder="Search countries..." />
+        </div>
+        <div class="sidebar-section-label">Countries</div>
+        <div id="countryList"></div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main-content">
+        <div class="welcome-state" id="welcomeState">
+          <div>
+            <div style="font-size:56px;margin-bottom:16px;">🌐</div>
+            <h2>Select a country to generate a strategic brief</h2>
+            <p>CountryIQ analyses bilateral relationships, opportunities, and risks<br>for UAE MOEI senior officials preparing for diplomatic meetings.</p>
+          </div>
+        </div>
+
+        <div class="loading-state" id="loadingState">
+          <div style="margin-bottom:20px;font-size:16px;font-weight:600;color:var(--teal);">
+            ⚡ Generating Strategic Brief...
+          </div>
+          <div class="orchestrator-steps" id="orchestratorSteps">
+            <div class="orchestrator-step" id="step1">
+              <div class="step-icon">📂</div>
+              <div><div class="step-label">Retrieving country intelligence data</div><div class="step-detail" id="step1-detail"></div></div>
+            </div>
+            <div class="orchestrator-step" id="step2">
+              <div class="step-icon">📊</div>
+              <div><div class="step-label">Analysing strategic capacity</div><div class="step-detail" id="step2-detail"></div></div>
+            </div>
+            <div class="orchestrator-step" id="step3">
+              <div class="step-icon">🎯</div>
+              <div><div class="step-label">Ranking opportunities</div><div class="step-detail" id="step3-detail"></div></div>
+            </div>
+            <div class="orchestrator-step" id="step4">
+              <div class="step-icon spin">⚙️</div>
+              <div><div class="step-label">Generating briefing narrative (Claude AI)</div><div class="step-detail" id="step4-detail"></div></div>
+            </div>
+            <div class="orchestrator-step" id="step5">
+              <div class="step-icon">🛡️</div>
+              <div><div class="step-label">Source Trust Guard verification</div><div class="step-detail" id="step5-detail"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="briefing-content" id="briefingContent"></div>
+      </main>
+    </div>
+
+    <script>
+      const API_BASE = "";
+      let allCountries = [];
+      let currentCountryCode = null;
+      let currentBriefing = null;
+      let chatHistory = [];
+
+      const COUNTRY_FLAGS = {
+        BR: "🇧🇷", IN: "🇮🇳", CN: "🇨🇳", DE: "🇩🇪", US: "🇺🇸",
+        FR: "🇫🇷", KR: "🇰🇷", KE: "🇰🇪", ID: "🇮🇩", NG: "🇳🇬", SG: "🇸🇬"
+      };
+
+      function formatUSD(value) {
+        if (!value) return "—";
+        if (value >= 1e12) return `$${(value / 1e12).toFixed(1)}T`;
+        if (value >= 1e9) return `$${(value / 1e9).toFixed(1)}B`;
+        if (value >= 1e6) return `$${(value / 1e6).toFixed(1)}M`;
+        return `$${value.toLocaleString()}`;
+      }
+
+      function getFlag(code) { return COUNTRY_FLAGS[code] || "🌍"; }
+
+      function trustScoreClass(score) {
+        if (score >= 80) return "high";
+        if (score >= 60) return "medium";
+        return "low";
+      }
+
+      async function loadCountries() {
+        const res = await fetch(`${API_BASE}/api/challenge-2/countries`);
+        const data = await res.json();
+        allCountries = data.countries || [];
+        renderCountryList(allCountries);
+      }
+
+      function renderCountryList(countries) {
+        const list = document.getElementById("countryList");
+        list.innerHTML = countries.map((c) => `
+          <div class="country-item${c.countryCode === currentCountryCode ? " active" : ""}"
+               data-code="${c.countryCode}" onclick="selectCountry('${c.countryCode}')">
+            <div class="country-flag">${getFlag(c.countryCode)}</div>
+            <div class="country-item-info">
+              <div class="country-item-name">${c.countryName}</div>
+              <div class="country-item-region">${c.region}</div>
+              <div class="country-item-trade">${formatUSD(c.bilateralTradeUsd)} bilateral trade</div>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      document.getElementById("countrySearch").addEventListener("input", (e) => {
+        const q = e.target.value.toLowerCase();
+        renderCountryList(allCountries.filter((c) =>
+          c.countryName.toLowerCase().includes(q) || c.region.toLowerCase().includes(q)
+        ));
+      });
+
+      async function selectCountry(code) {
+        currentCountryCode = code;
+        chatHistory = [];
+
+        // Update sidebar
+        document.querySelectorAll(".country-item").forEach((el) => {
+          el.classList.toggle("active", el.dataset.code === code);
+        });
+
+        // Show loading
+        document.getElementById("welcomeState").style.display = "none";
+        const loadingState = document.getElementById("loadingState");
+        loadingState.classList.add("show");
+        document.getElementById("briefingContent").classList.remove("show");
+
+        // Reset steps
+        for (let i = 1; i <= 5; i++) {
+          const el = document.getElementById(`step${i}`);
+          el.className = "orchestrator-step";
+          document.getElementById(`step${i}-detail`).textContent = "";
+        }
+
+        try {
+          // Animate steps while waiting
+          animateStep(1);
+
+          const res = await fetch(`${API_BASE}/api/challenge-2/briefing`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ countryCode: code })
+          });
+
+          const data = await res.json();
+          currentBriefing = data;
+
+          // Animate completed steps
+          if (data.orchestratorSteps) {
+            for (const step of data.orchestratorSteps) {
+              const el = document.getElementById(`step${step.step}`);
+              if (el) {
+                el.className = "orchestrator-step done";
+                const detail = document.getElementById(`step${step.step}-detail`);
+                if (detail) detail.textContent = step.detail;
+              }
+              await sleep(180);
+            }
+          }
+
+          await sleep(400);
+
+          loadingState.classList.remove("show");
+          renderBriefing(data);
+
+        } catch (err) {
+          loadingState.classList.remove("show");
+          document.getElementById("briefingContent").innerHTML = `
+            <div style="color:var(--red);padding:20px">Error generating brief: ${err.message}</div>`;
+          document.getElementById("briefingContent").classList.add("show");
+        }
+      }
+
+      function animateStep(stepNum) {
+        for (let i = 1; i <= stepNum; i++) {
+          const el = document.getElementById(`step${i}`);
+          if (el && i < stepNum) el.className = "orchestrator-step done";
+          if (el && i === stepNum) el.className = "orchestrator-step active";
+        }
+      }
+
+      function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
+
+      function renderBriefing(data) {
+        const b = data.brief || {};
+        const guard = data.sourceGuard || {};
+        const flagCount = (guard.flags || []).filter((f) => f.severity === "high").length;
+
+        const stepsBarHtml = (data.orchestratorSteps || []).map((s) =>
+          `<div class="step-chip">✓ ${s.label}</div>`
+        ).join("");
+
+        const oppsHtml = (b.topOpportunities || []).map((o) => `
+          <div class="opp-card">
+            <div class="opp-priority ${(o.priority || "").toLowerCase()}">${o.priority || "Medium"} Priority</div>
+            <div class="opp-title">${escHtml(o.title)}</div>
+            <div class="opp-value">${escHtml(o.value)}</div>
+            <div class="opp-insight">${escHtml(o.insight)}</div>
+          </div>
+        `).join("");
+
+        const risksHtml = (b.keyRisks || []).map((r) => `
+          <div class="risk-item">
+            <div class="risk-icon">⚠️</div>
+            <div>
+              <div class="risk-category">${escHtml(r.category)}</div>
+              <div class="risk-text">${escHtml(r.risk)}</div>
+              <div class="risk-mitigation">🛡 ${escHtml(r.mitigation)}</div>
+            </div>
+          </div>
+        `).join("");
+
+        const talkingPointsHtml = (b.talkingPoints || []).map((tp, i) => `
+          <div class="talking-point">
+            <div class="num">${i + 1}</div>
+            <div>${escHtml(tp)}</div>
+          </div>
+        `).join("");
+
+        const trustClass = trustScoreClass(guard.trustScore || 85);
+        const unverifiedFlagsHtml = (guard.flags || [])
+          .filter((f) => f.severity === "high")
+          .map((f) => `<div class="trust-flag-item high">🚩 ${escHtml(f.message)}</div>`)
+          .join("");
+        const warningFlagsHtml = (guard.flags || [])
+          .filter((f) => f.severity === "warning")
+          .map((f) => `<div class="trust-flag-item warning">⚠️ ${escHtml(f.message)}</div>`)
+          .join("");
+
+        const guardPanel = flagCount > 0
+          ? `<div style="margin-top:10px;">
+              <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:8px;">🚩 UNVERIFIED CLAIMS DETECTED</div>
+              ${unverifiedFlagsHtml}${warningFlagsHtml}
+             </div>`
+          : `<div style="margin-top:10px;font-size:12px;color:var(--green);">✅ All key claims verified against source data</div>`;
+
+        const html = `
+          <div class="steps-bar">${stepsBarHtml}</div>
+
+          <div class="briefing-header">
+            <div class="briefing-country-flag">${getFlag(data.countryCode)}</div>
+            <div>
+              <div class="briefing-title">${escHtml(data.countryName)}</div>
+              <div class="briefing-subtitle" dir="rtl">${escHtml(data.countryNameAr || "")}</div>
+              <div class="briefing-meta">
+                <span class="meta-chip gold">Generated ${new Date(data.generatedAt).toLocaleTimeString()}</span>
+                <span class="meta-chip teal">Source: ${escHtml(data.llmSource === "claude" ? "Claude AI + Source Data" : "Structured Fallback")}</span>
+                <span class="meta-chip ${trustClass === "high" ? "green" : trustClass === "medium" ? "gold" : "red"}">Trust: ${guard.trustScore || 85}%</span>
+                ${flagCount > 0 ? `<span class="meta-chip red">⚠️ ${flagCount} Unverified Claims</span>` : ""}
+              </div>
+            </div>
+          </div>
+
+          <div class="action-bar">
+            <button class="btn btn-primary" onclick="downloadExport()">📥 Export Brief</button>
+            <button class="btn btn-outline" onclick="document.getElementById('compareBtn').click()">⇌ Compare</button>
+            <button class="btn btn-ghost" onclick="document.getElementById('chatSection').scrollIntoView({behavior:'smooth'})">💬 Follow-up Q&A</button>
+          </div>
+
+          <div class="section">
+            <div class="section-header">Executive Summary</div>
+            <div class="exec-summary">${escHtml(b.executiveSummary || "")}</div>
+          </div>
+
+          ${b.strategicContext ? `
+          <div class="section">
+            <div class="section-header">Strategic Context</div>
+            <div style="font-size:14px;line-height:1.7;color:var(--muted)">${escHtml(b.strategicContext)}</div>
+          </div>` : ""}
+
+          <div class="section">
+            <div class="section-header">Top Opportunities</div>
+            <div class="opportunity-grid">${oppsHtml}</div>
+          </div>
+
+          <div class="section">
+            <div class="section-header">Key Risks</div>
+            <div class="risk-list">${risksHtml}</div>
+          </div>
+
+          <div class="section">
+            <div class="section-header">Meeting Talking Points</div>
+            <div class="talking-points">${talkingPointsHtml}</div>
+          </div>
+
+          ${b.closingRecommendation ? `
+          <div class="section">
+            <div class="section-header">Recommended Focus</div>
+            <div class="closing-rec"><strong>Prioritize: </strong>${escHtml(b.closingRecommendation)}</div>
+          </div>` : ""}
+
+          <div class="section">
+            <div class="section-header">Source Trust Guard</div>
+            <div class="trust-guard-panel">
+              <div class="trust-score-ring ${trustClass}">${guard.trustScore || 85}%</div>
+              <div class="trust-info">
+                <div class="trust-label">Source Verification: ${trustClass === "high" ? "Verified" : trustClass === "medium" ? "Partially Verified" : "Verification Required"}</div>
+                <div class="trust-detail">Data confidence: ${escHtml(guard.dataConfidence || "Medium")} | Last verified: ${escHtml(guard.lastVerifiedAt || "—")}</div>
+                ${guardPanel}
+              </div>
+            </div>
+          </div>
+
+          <div class="section chat-section" id="chatSection">
+            <div class="section-header">Follow-up Q&amp;A</div>
+            <div class="chat-input-row">
+              <input class="chat-input" id="chatInput" placeholder="Ask a follow-up question about ${escHtml(data.countryName)}..." onkeydown="if(event.key==='Enter')sendChat()" />
+              <button class="btn btn-primary" onclick="sendChat()">Ask</button>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+          </div>
+        `;
+
+        const content = document.getElementById("briefingContent");
+        content.innerHTML = html;
+        content.classList.add("show");
+
+        // Show compare button
+        document.getElementById("compareBtn").style.display = "block";
+      }
+
+      async function sendChat() {
+        const input = document.getElementById("chatInput");
+        const question = input.value.trim();
+        if (!question || !currentCountryCode) return;
+
+        input.value = "";
+        const messages = document.getElementById("chatMessages");
+
+        messages.innerHTML += `<div class="chat-msg user">${escHtml(question)}</div>`;
+        messages.innerHTML += `<div class="chat-msg ai" id="chat-loading">⚡ Analysing...</div>`;
+        messages.scrollIntoView({ behavior: "smooth", block: "end" });
+
+        try {
+          const res = await fetch(`${API_BASE}/api/challenge-2/chat`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ countryCode: currentCountryCode, question })
+          });
+          const data = await res.json();
+
+          document.getElementById("chat-loading")?.remove();
+          const trustInfo = data.trustScore ? `<div class="chat-meta">Source Trust: ${data.trustScore}%${data.flags?.length ? ` | ⚠️ ${data.flags.length} flag(s)` : ""}</div>` : "";
+          messages.innerHTML += `<div class="chat-msg ai">${escHtml(data.answer || "No answer available.")}${trustInfo}</div>`;
+          messages.scrollIntoView({ behavior: "smooth", block: "end" });
+        } catch {
+          document.getElementById("chat-loading")?.remove();
+          messages.innerHTML += `<div class="chat-msg ai" style="color:var(--red)">Error reaching CountryIQ service.</div>`;
+        }
+      }
+
+      async function downloadExport() {
+        if (!currentCountryCode) return;
+        const url = `${API_BASE}/api/challenge-2/export/${currentCountryCode}`;
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `CountryIQ-${currentCountryCode}-Brief.json`;
+        a.click();
+      }
+
+      document.getElementById("compareBtn").addEventListener("click", () => {
+        const other = allCountries.find((c) => c.countryCode !== currentCountryCode);
+        if (!other) return;
+        const code = prompt(`Enter country code to compare with ${currentCountryCode}:\n\nAvailable: ${allCountries.map((c) => c.countryCode).join(", ")}`);
+        if (code) runCompare(currentCountryCode, code.toUpperCase().trim());
+      });
+
+      async function runCompare(codeA, codeB) {
+        try {
+          const content = document.getElementById("briefingContent");
+          content.innerHTML += `<div id="compare-loading" style="padding:20px;color:var(--teal)">⚡ Comparing ${codeA} vs ${codeB}...</div>`;
+
+          const res = await fetch(`${API_BASE}/api/challenge-2/compare`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ countryCodeA: codeA, countryCodeB: codeB })
+          });
+          const data = await res.json();
+
+          document.getElementById("compare-loading")?.remove();
+          const c = data.comparison || {};
+          const dimsHtml = (c.comparisonDimensions || []).map((d) => `
+            <tr>
+              <td style="padding:10px 14px;font-size:13px;font-weight:600;color:var(--muted)">${escHtml(d.dimension)}</td>
+              <td style="padding:10px 14px;font-size:13px;color:${d.winner === "A" ? "var(--green)" : "var(--text)"}">${escHtml(d.countryA || "")}</td>
+              <td style="padding:10px 14px;font-size:13px;color:${d.winner === "B" ? "var(--green)" : "var(--text)"}">${escHtml(d.countryB || "")}</td>
+            </tr>
+          `).join("");
+
+          content.innerHTML += `
+            <div class="section" style="margin-top:32px">
+              <div class="section-header">Comparison: ${escHtml(codeA)} vs ${escHtml(codeB)}</div>
+              <div style="margin-bottom:16px">
+                <span class="meta-chip green" style="font-size:13px;padding:6px 14px">
+                  🏆 Stronger opportunity: ${escHtml(c.winnerOverall || codeA)}
+                </span>
+              </div>
+              <table style="width:100%;border-collapse:collapse;background:var(--surface);border-radius:10px;overflow:hidden">
+                <thead>
+                  <tr style="background:var(--navy-soft)">
+                    <th style="padding:12px 14px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)">Dimension</th>
+                    <th style="padding:12px 14px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--gold)">${escHtml(codeA)}</th>
+                    <th style="padding:12px 14px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--teal)">${escHtml(codeB)}</th>
+                  </tr>
+                </thead>
+                <tbody>${dimsHtml}</tbody>
+              </table>
+              ${c.recommendedFocus ? `<div class="closing-rec" style="margin-top:16px"><strong>Recommended Focus: </strong>${escHtml(c.recommendedFocus)}</div>` : ""}
+            </div>
+          `;
+          content.scrollTop = content.scrollHeight;
+        } catch (err) {
+          console.error("Compare error:", err);
+        }
+      }
+
+      function escHtml(str) {
+        return String(str || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      // Init
+      if (window.MoeiTrustGateAuth?.requireAccess({
+        service: "country-intelligence",
+        storageKey: "moei-trustgate-session:challenge-2-countryiq",
+        requiredPrivilege: "office.login",
+        productName: "CountryIQ",
+        title: "Executive intelligence sign-in",
+        copy: "CountryIQ contains strategic country intelligence. Sign in with TrustGate before viewing or generating briefings."
+      })) {
+        loadCountries();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+{
+  "countryCode": "FR",
+  "countryName": "France",
+  "countryNameAr": "فرنسا",
+  "region": "Western Europe",
+  "capitalCity": "Paris",
+  "population": 68400000,
+  "gdpUsd": 2923000000000,
+  "gdpPerCapitaUsd": 42730,
+  "gdpGrowthPct": 1.1,
+  "currency": "Euro (EUR)",
+  "languages": ["French"],
+  "governmentType": "Semi-Presidential Republic",
+  "headOfState": "President Emmanuel Macron (since 2017)",
+  "lastUpdated": "2026-01-01",
+  "economicProfile": {
+    "sectors": {
+      "services": { "gdpSharePct": 78.8, "keyProducts": ["tourism", "finance", "luxury goods", "IT", "healthcare"] },
+      "industry": { "gdpSharePct": 19.4, "keyProducts": ["aerospace (Airbus)", "nuclear", "defense", "pharmaceuticals"] },
+      "agriculture": { "gdpSharePct": 1.8, "keyProducts": ["wine", "wheat", "dairy", "beef"] }
+    },
+    "exportValueUsd": 617000000000,
+    "importValueUsd": 698000000000,
+    "tradeBalanceUsd": -81000000000,
+    "inflationPct": 2.4,
+    "unemploymentPct": 7.3,
+    "fdiInflowsUsd": 36000000000
+  },
+  "energyProfile": {
+    "renewablesSharePct": 27.4,
+    "electricityMixPct": { "nuclear": 70.6, "hydro": 10.2, "wind": 8.9, "solar": 4.2, "gas": 5.8, "other": 0.3 },
+    "carbonEmissionsMtCO2": 330,
+    "energyTransitionGoals": { "nuclearNewBuildGW": 14, "renewablesTarget2030Pct": 40 }
+  },
+  "uaeRelations": {
+    "diplomaticStatus": "Exceptional Partnership — French military base in Abu Dhabi (Camp de la Paix)",
+    "bilateralTradeUsd": 7200000000,
+    "investmentRelations": { "uaeFdiInCountryUsd": 5000000000, "keyUAEInvestors": ["ADQ in Groupe ADP (airports)", "Mubadala in Air France-KLM"] },
+    "diaspora": { "frenchInUAE": 35000, "uaeCitizensInFrance": 8000 },
+    "strategicImportance": "Only Western country with permanent military base in UAE. Airbus–ADNOC aviation fuel. Louvre Abu Dhabi. Nuclear cooperation (EDF–Nawah). Luxury tourism corridor (Abu Dhabi–Paris)."
+  },
+  "opportunities": [
+    {
+      "id": "FR-OPP-001",
+      "title": "Nuclear Power Cooperation",
+      "sector": "Nuclear Energy",
+      "description": "EDF and Nawah Energy partnership for UAE's Barakah Phase 2 consultation. France's 3rd-gen EPR reactor export to UAE feasibility study.",
+      "opportunityValueUsd": 3000000000,
+      "timelineYears": 10,
+      "riskLevel": "Low",
+      "sourceVerified": true
+    }
+  ],
+  "riskFactors": [
+    {
+      "id": "FR-RISK-001",
+      "category": "Political",
+      "title": "French Domestic Political Instability",
+      "description": "Hung Parliament post-2024 elections. Multiple prime ministers in 12 months. Investment decisions delayed in French state enterprises.",
+      "severity": "Medium",
+      "sourceVerified": true
+    }
+  ],
+  "keyMeetingTopics": [
+    "EDF nuclear cooperation MOU renewal",
+    "ADQ–ADP Paris airport stake expansion",
+    "French military base tenure and UAE security cooperation",
+    "Abu Dhabi–Paris direct route Airbus fleet upgrade"
+  ],
+  "lastVerifiedAt": "2026-06-01",
+  "dataConfidence": "High"
+}

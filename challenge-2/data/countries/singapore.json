@@ -1,0 +1,75 @@
+{
+  "countryCode": "SG",
+  "countryName": "Singapore",
+  "countryNameAr": "سنغافورة",
+  "region": "Southeast Asia",
+  "capitalCity": "Singapore",
+  "population": 5900000,
+  "gdpUsd": 501000000000,
+  "gdpPerCapitaUsd": 84734,
+  "gdpGrowthPct": 2.6,
+  "currency": "Singapore Dollar (SGD)",
+  "languages": ["English", "Mandarin", "Malay", "Tamil"],
+  "governmentType": "Parliamentary Republic (PAP dominant)",
+  "headOfState": "President Tharman Shanmugaratnam; PM Lawrence Wong (since 2024)",
+  "lastUpdated": "2026-01-01",
+  "economicProfile": {
+    "sectors": {
+      "services": { "gdpSharePct": 72.8, "keyProducts": ["finance", "trade & logistics", "professional services"] },
+      "industry": { "gdpSharePct": 24.8, "keyProducts": ["semiconductors", "pharmaceuticals", "chemicals", "oil refining"] },
+      "agriculture": { "gdpSharePct": 0.1, "keyProducts": ["aquaculture"] }
+    },
+    "exportValueUsd": 532000000000,
+    "importValueUsd": 492000000000,
+    "tradeBalanceUsd": 40000000000,
+    "inflationPct": 2.9,
+    "unemploymentPct": 1.9,
+    "fdiInflowsUsd": 141000000000
+  },
+  "energyProfile": {
+    "renewablesSharePct": 4.1,
+    "electricityMixPct": { "natural_gas": 94.8, "solar": 4.1, "other": 1.1 },
+    "carbonEmissionsMtCO2": 50,
+    "energyTransitionGoals": { "solarTarget2030GW": 2, "lowCarbonHydrogenBy2050": "30% of energy mix", "netZeroTarget": 2050 }
+  },
+  "uaeRelations": {
+    "diplomaticStatus": "Strong strategic partnership; Singapore and UAE compete/collaborate as financial hubs",
+    "bilateralTradeUsd": 11900000000,
+    "investmentRelations": {
+      "uaeFdiInCountryUsd": 6000000000,
+      "keyUAEInvestors": ["Temasek–Mubadala cross-holdings", "GIC–ADIA joint infrastructure fund"]
+    },
+    "diaspora": { "singaporeansInUAE": 8000 },
+    "strategicImportance": "UAE and Singapore are the two premier global financial hub cities outside the Western axis. GIC–ADIA sovereign co-investment. Singapore as UAE's Asia-Pacific wealth management gateway. Competing for family office business."
+  },
+  "opportunities": [
+    {
+      "id": "SG-OPP-001",
+      "title": "ADIA–GIC Infrastructure Co-Investment",
+      "sector": "Infrastructure / Finance",
+      "description": "Joint $5B infrastructure fund targeting Southeast Asian data centers, ports, and renewable energy. Singapore as structuring jurisdiction.",
+      "opportunityValueUsd": 5000000000,
+      "timelineYears": 4,
+      "riskLevel": "Low",
+      "sourceVerified": true
+    }
+  ],
+  "riskFactors": [
+    {
+      "id": "SG-RISK-001",
+      "category": "Competition",
+      "title": "Competing as Financial Hub",
+      "description": "Singapore and UAE compete for the same family office clients, crypto regulations, and fintech listings. Need clear differentiation strategy.",
+      "severity": "Low",
+      "sourceVerified": true
+    }
+  ],
+  "keyMeetingTopics": [
+    "ADIA–GIC infrastructure fund deployment update",
+    "Green shipping lane Singapore–Abu Dhabi",
+    "Digital finance regulatory harmonization",
+    "Carbon credit market mutual recognition"
+  ],
+  "lastVerifiedAt": "2026-06-01",
+  "dataConfidence": "High"
+}

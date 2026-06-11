@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "customer-session.schema.json",
+  "title": "ArrearsFlow Customer Session",
+  "type": "object",
+  "required": ["contractVersion", "sessionId", "accountId", "status", "signedInAt", "lastSeenAt"],
+  "properties": {
+    "contractVersion": { "const": "customer-session.v1" },
+    "sessionId": { "type": "string" },
+    "accountId": { "type": "string" },
+    "status": { "enum": ["active", "signed_out", "expired"] },
+    "signedInAt": { "type": "string" },
+    "lastSeenAt": { "type": "string" }
+  },
+  "additionalProperties": true
+}

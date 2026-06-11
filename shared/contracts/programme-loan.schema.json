@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/programme-loan.schema.json",
+  "title": "MOEI Programme Loan Snapshot",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "beneficiaryId",
+    "caseId",
+    "loanId",
+    "source",
+    "retrievedAt",
+    "originalLoanAmount",
+    "remainingLoanBalance",
+    "originalApprovedRepaymentMonths",
+    "remainingRepaymentMonths",
+    "totalArrearsAmount",
+    "unpaidInstallmentsCount",
+    "currentMonthlyInstallment",
+    "paymentHistorySummary",
+    "hasActiveReschedulingRequest",
+    "previousApplications",
+    "familyStatus",
+    "dependentsCount",
+    "familyMembersCount"
+  ],
+  "properties": {
+    "contractVersion": { "const": "programme-loan.v1" },
+    "beneficiaryId": { "type": "string", "minLength": 1 },
+    "caseId": { "type": "string", "minLength": 1 },
+    "loanId": { "type": "string", "minLength": 1 },
+    "source": { "type": "string", "minLength": 1 },
+    "retrievedAt": { "type": "string", "format": "date-time" },
+    "originalLoanAmount": { "type": "number", "minimum": 0 },
+    "remainingLoanBalance": { "type": "number", "minimum": 0 },
+    "originalApprovedRepaymentMonths": { "type": "number", "minimum": 0 },
+    "remainingRepaymentMonths": { "type": "number", "minimum": 0 },
+    "totalArrearsAmount": { "type": "number", "minimum": 0 },
+    "unpaidInstallmentsCount": { "type": "number", "minimum": 0 },
+    "currentMonthlyInstallment": { "type": "number", "minimum": 0 },
+    "paymentHistorySummary": {
+      "type": "object",
+      "required": ["lastPaidAt", "missedInstallments", "pattern"],
+      "properties": {
+        "lastPaidAt": { "type": ["string", "null"], "format": "date-time" },
+        "missedInstallments": { "type": "number", "minimum": 0 },
+        "pattern": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "hasActiveReschedulingRequest": { "type": "boolean" },
+    "activeReschedulingRequest": {
+      "type": ["object", "null"],
+      "properties": {
+        "requestId": { "type": "string" },
+        "status": { "type": "string" },
+        "openedAt": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+    "previousApplications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["requestId", "status"],
+        "properties": {
+          "requestId": { "type": "string" },
+          "status": { "type": "string" },
+          "closedAt": { "type": ["string", "null"], "format": "date-time" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "familyStatus": { "type": "string" },
+    "dependentsCount": { "type": "number", "minimum": 0 },
+    "familyMembersCount": { "type": "number", "minimum": 1 }
+  },
+  "additionalProperties": true
+}

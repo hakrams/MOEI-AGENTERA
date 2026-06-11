@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/case.schema.json",
+  "title": "MOEI Housing Arrears Case",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "id",
+    "status",
+    "applicantName",
+    "emiratesIdMasked",
+    "arrearsAmount",
+    "monthsDelayed",
+    "monthlyIncome",
+    "monthlyObligations",
+    "dependents",
+    "employmentStatus",
+    "salaryStatus",
+    "bankStatus",
+    "auditTrail"
+  ],
+  "properties": {
+    "contractVersion": { "const": "case.v1" },
+    "id": { "type": "string", "pattern": "^MOEI-HOUSING-[0-9]{4}-(?:[0-9]{3}|[A-Z0-9]+-[A-Z0-9]+)$" },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "submitted", "system_review", "officer_review", "more_information", "approved", "rejected"]
+    },
+    "language": { "type": "string", "enum": ["ar", "en"] },
+    "source": { "type": "string" },
+    "channel": { "type": "string" },
+    "applicantName": { "type": "string", "minLength": 1 },
+    "applicantNameAr": { "type": "string" },
+    "emiratesIdMasked": { "type": "string", "minLength": 1 },
+    "phoneMasked": { "type": "string" },
+    "emailMasked": { "type": "string" },
+    "arrearsAmount": { "type": "number", "minimum": 0 },
+    "monthsDelayed": { "type": "number", "minimum": 0 },
+    "monthlyIncome": { "type": "number", "minimum": 0 },
+    "monthlyObligations": { "type": "number", "minimum": 0 },
+    "dependents": { "type": "number", "minimum": 0 },
+    "employmentStatus": { "type": "string" },
+    "employmentStatusAr": { "type": "string" },
+    "existingLoans": { "type": "boolean" },
+    "reason": { "type": "string" },
+    "reasonAr": { "type": "string" },
+    "salaryStatus": { "type": "string", "enum": ["valid", "invalid", "missing"] },
+    "bankStatus": { "type": "string", "enum": ["valid", "invalid", "missing", "not_required"] },
+    "documentThreads": {
+      "type": "object",
+      "additionalProperties": { "$ref": "document-thread.schema.json" }
+    },
+    "submittedAt": { "type": ["string", "null"], "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "preparedSnapshotAt": { "type": "string", "format": "date-time" },
+    "auditTrail": {
+      "type": "array",
+      "items": { "$ref": "audit-event.schema.json" }
+    }
+  },
+  "additionalProperties": true
+}

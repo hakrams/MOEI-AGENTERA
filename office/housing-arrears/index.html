@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مساحة عمل الموظف - إعادة جدولة متأخرات الإسكان</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div style="background:#1a3a6b;color:#fff;font-size:11px;font-weight:600;text-align:center;padding:5px 12px;letter-spacing:0.5px;position:sticky;top:0;z-index:9999" aria-label="Simulation environment notice">🔵 SIMULATED — بيئة تجريبية · Simulation Environment — MOEI Hackathon Demo</div>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="uae-flag-strip" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="brand-block">
+          <div class="brand-mark" data-i18n="brand.mark"></div>
+          <div>
+            <div class="brand-title" data-i18n="brand.title"></div>
+            <div class="brand-subtitle" data-i18n="brand.subtitle"></div>
+          </div>
+        </div>
+        <button id="languageToggle" class="language-button" type="button"></button>
+        <div id="officeSessionCard" class="office-session-card" hidden></div>
+        <nav class="nav-list" data-i18n-aria="aria.officeSections">
+          <button class="nav-item active" data-screen="intake" data-i18n="nav.intake"></button>
+          <button class="nav-item" data-screen="system" data-i18n="nav.system"></button>
+          <button class="nav-item" data-screen="officer" data-i18n="nav.officer"></button>
+          <button class="nav-item" data-screen="audit" data-i18n="nav.audit"></button>
+          <button class="nav-item" data-screen="modules" data-i18n="nav.modules"></button>
+        </nav>
+        <div class="side-note">
+          <span class="note-label" data-i18n="principle.label"></span>
+          <p data-i18n="principle.copy"></p>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="wayfinding">
+          <a href="/office/" data-i18n="wayfinding.officeHome"></a>
+        </div>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" data-i18n="top.eyebrow"></p>
+            <h1 data-i18n="top.title"></h1>
+          </div>
+          <div class="metric-strip" data-i18n-aria="aria.serviceMetrics">
+            <div><span data-i18n="metric.currentLabel"></span><strong data-i18n="metric.currentValue"></strong></div>
+            <div><span data-i18n="metric.targetLabel"></span><strong data-i18n="metric.targetValue"></strong></div>
+            <div><span data-i18n="metric.controlLabel"></span><strong data-i18n="metric.controlValue"></strong></div>
+          </div>
+        </header>
+
+        <section id="screen-intake" class="screen active">
+          <div class="section-head">
+            <div>
+              <h2 data-i18n="intake.title"></h2>
+              <p data-i18n="intake.copy"></p>
+            </div>
+            <div class="case-picker">
+              <label for="caseSelect" data-i18n="intake.caseLabel"></label>
+              <select id="caseSelect"></select>
+              <div id="intakeQueueStats" class="queue-stats" aria-live="polite"></div>
+              <div id="impactPanel" style="margin-top:12px;"></div>
+            </div>
+          </div>
+
+          <div class="grid two-column">
+            <form id="intakeForm" class="panel form-panel">
+              <div class="form-grid">
+                <label><span data-i18n="field.applicantName"></span><input id="applicantName" name="applicantName" /></label>
+                <label><span data-i18n="field.emiratesId"></span><input id="emiratesIdMasked" name="emiratesIdMasked" /></label>
+                <label><span data-i18n="field.arrearsAmount"></span><input id="arrearsAmount" name="arrearsAmount" type="number" min="0" /></label>
+                <label><span data-i18n="field.monthsDelayed"></span><input id="monthsDelayed" name="monthsDelayed" type="number" min="0" /></label>
+                <label><span data-i18n="field.monthlyIncome"></span><input id="monthlyIncome" name="monthlyIncome" type="number" min="0" /></label>
+                <label><span data-i18n="field.monthlyObligations"></span><input id="monthlyObligations" name="monthlyObligations" type="number" min="0" /></label>
+                <label><span data-i18n="field.dependents"></span><input id="dependents" name="dependents" type="number" min="0" /></label>
+                <label><span data-i18n="field.employmentStatus"></span><select id="employmentStatus" name="employmentStatus"></select></label>
+              </div>
+              <label><span data-i18n="field.reason"></span><textarea id="reason" name="reason" rows="4"></textarea></label>
+              <label class="checkline">
+                <input id="existingLoans" name="existingLoans" type="checkbox" />
+                <span data-i18n="field.existingLoans"></span>
+              </label>
+
+              <div class="document-controls">
+                <div><span data-i18n="field.salaryCertificate"></span><select id="salaryStatus"></select></div>
+                <div><span data-i18n="field.bankStatement"></span><select id="bankStatus"></select></div>
+              </div>
+
+              <div class="auto-prep-notice">
+                <span class="mini-pill neutral" data-i18n="intake.autoPreparedTitle"></span>
+                <p data-i18n="intake.autoPreparedCopy"></p>
+              </div>
+            </form>
+
+            <aside class="panel">
+              <h3 data-i18n="intake.requirements"></h3>
+              <div id="requirementList" class="check-list"></div>
+              <div class="preview-box">
+                <span class="note-label" data-i18n="intake.statement"></span>
+                <p id="casePreview"></p>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="screen-system" class="screen">
+          <div class="section-head">
+            <div>
+              <h2 data-i18n="system.title"></h2>
+              <p data-i18n="system.copy"></p>
+            </div>
+            <div class="auto-prep-status">
+              <span class="mini-pill neutral" data-i18n="system.preparedLabel"></span>
+              <strong data-i18n="system.preparedCopy"></strong>
+            </div>
+          </div>
+          <div class="grid three-column">
+            <div class="panel"><h3 data-i18n="system.facts"></h3><div id="factsList" class="detail-list"></div></div>
+            <div class="panel"><h3 data-i18n="system.documents"></h3><div id="documentList" class="status-list"></div></div>
+            <div class="panel highlight-panel"><h3 data-i18n="system.recommendation"></h3><div id="recommendationCard"></div></div>
+          </div>
+          <div class="grid two-column lower-grid">
+            <div class="panel"><h3 data-i18n="system.rules"></h3><div id="ruleTrace" class="rule-list"></div></div>
+            <div class="panel system-control-panel">
+              <div id="aiSpecialistCard" class="ai-specialist-card"></div>
+              <h3 data-i18n="system.log"></h3>
+              <div id="systemLog" class="timeline"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-officer" class="screen">
+          <div class="section-head">
+            <div>
+              <h2 data-i18n="officer.title"></h2>
+              <p data-i18n="officer.copy"></p>
+            </div>
+            <span id="officerStatus" class="status-pill neutral"></span>
+          </div>
+          <div class="dashboard-grid">
+            <aside class="panel queue-panel"><h3 data-i18n="officer.queue"></h3><div id="caseQueue" class="case-queue"></div></aside>
+            <div class="panel">
+              <h3 data-i18n="officer.selected"></h3>
+              <div id="officerSummary" class="officer-summary"></div>
+              <div class="officer-actions">
+                <button id="approveBtn" class="primary-action" data-i18n="action.approve"></button>
+                <button id="moreInfoBtn" class="secondary-action" data-i18n="action.moreInfo"></button>
+                <button id="escalateBtn" class="secondary-action" data-i18n="action.escalate"></button>
+              </div>
+            </div>
+            <aside class="panel"><h3 data-i18n="officer.evidence"></h3><div id="officerEvidence" class="compact-stack"></div></aside>
+          </div>
+        </section>
+
+        <section id="screen-audit" class="screen">
+          <div class="section-head">
+            <div>
+              <h2 data-i18n="audit.title"></h2>
+              <p data-i18n="audit.copy"></p>
+            </div>
+            <span id="auditStatus" class="status-pill neutral"></span>
+          </div>
+          <div class="grid two-column">
+            <div class="panel stamped-record">
+              <h3 data-i18n="audit.record"></h3>
+              <div id="sealCard" class="seal-card empty"></div>
+              <div id="finalSummary" class="final-summary"></div>
+            </div>
+            <div class="panel"><h3 data-i18n="audit.trail"></h3><div id="auditLog" class="timeline"></div></div>
+          </div>
+        </section>
+
+        <section id="screen-modules" class="screen">
+          <div class="section-head">
+            <div>
+              <h2 data-i18n="modules.title"></h2>
+              <p data-i18n="modules.copy"></p>
+            </div>
+          </div>
+          <div class="module-grid">
+            <article class="panel module-card active-module"><span class="module-status" data-i18n="modules.active"></span><h3 data-i18n="modules.housing"></h3><p data-i18n="modules.housingCopy"></p></article>
+            <article class="panel module-card"><span class="module-status" data-i18n="modules.preview"></span><h3 data-i18n="modules.country"></h3><p data-i18n="modules.countryCopy"></p></article>
+            <article class="panel module-card"><span class="module-status" data-i18n="modules.preview"></span><h3 data-i18n="modules.omni"></h3><p data-i18n="modules.omniCopy"></p></article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../../shared/services/financial-study/programme-loan-service.js"></script>
+    <script src="../../shared/services/financial-study/document-completeness-service.js"></script>
+    <script src="../../shared/services/financial-study/financial-capacity-service.js"></script>
+    <script src="../../shared/services/financial-study/rescheduling-policy-service.js"></script>
+    <script src="../../shared/services/financial-study/recommendation-service.js"></script>
+    <script src="../../shared/services/financial-study/confidence-service.js"></script>
+    <script src="../../shared/services/financial-study/audit-ledger-service.js"></script>
+    <script src="../../shared/services/financial-study/assessment-orchestrator.js"></script>
+    <script src="../../shared/live-api-client.js"></script>
+    <script src="../../shared/workflow.js"></script>
+    <script src="/runtime-config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

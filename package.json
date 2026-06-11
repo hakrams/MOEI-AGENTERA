@@ -1,0 +1,21 @@
+{
+  "name": "moei-hackathon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MOEI Hackathon — ArrearsFlow (C1) + OneCX (C3)",
+  "main": "server.js",
+  "scripts": {
+    "verify:ddahub": "node scripts/verify-ddahub-persona-linking.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.55.0",
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^17.4.2",
+    "openai": "^4.100.0",
+    "twilio": "^6.0.2",
+    "ws": "^8.21.0"
+  }
+}

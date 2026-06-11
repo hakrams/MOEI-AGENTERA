@@ -1,0 +1,78 @@
+{
+  "countryCode": "NG",
+  "countryName": "Nigeria",
+  "countryNameAr": "نيجيريا",
+  "region": "West Africa",
+  "capitalCity": "Abuja",
+  "population": 220000000,
+  "gdpUsd": 477000000000,
+  "gdpPerCapitaUsd": 2200,
+  "gdpGrowthPct": 3.1,
+  "currency": "Nigerian Naira (NGN)",
+  "languages": ["English", "Hausa", "Yoruba", "Igbo"],
+  "governmentType": "Federal Presidential Republic",
+  "headOfState": "President Bola Ahmed Tinubu (since 2023)",
+  "lastUpdated": "2026-01-01",
+  "economicProfile": {
+    "sectors": {
+      "services": { "gdpSharePct": 53.0, "keyProducts": ["telecommunications", "finance", "retail"] },
+      "industry": { "gdpSharePct": 26.2, "keyProducts": ["crude oil", "LNG", "petrochemicals", "cement"] },
+      "agriculture": { "gdpSharePct": 22.4, "keyProducts": ["cassava", "yams", "cocoa", "groundnuts"] }
+    },
+    "exportValueUsd": 46000000000,
+    "importValueUsd": 27000000000,
+    "tradeBalanceUsd": 19000000000,
+    "inflationPct": 32.7,
+    "unemploymentPct": 33.3,
+    "fdiInflowsUsd": 1600000000
+  },
+  "energyProfile": {
+    "oilProductionBblPerDay": 1350000,
+    "naturalGasProductionBcm": 50,
+    "renewablesSharePct": 18.6,
+    "electricityMixPct": { "gas": 79.2, "hydro": 18.6, "solar": 2.2 },
+    "carbonEmissionsMtCO2": 124,
+    "energyTransitionGoals": { "gasFlareEndTarget": 2030, "renewablesTarget2030Pct": 36 }
+  },
+  "uaeRelations": {
+    "diplomaticStatus": "Strategic partnership; significant UAE business presence in Lagos",
+    "bilateralTradeUsd": 2900000000,
+    "investmentRelations": {
+      "uaeFdiInCountryUsd": 800000000,
+      "keyUAEInvestors": ["DP World Lagos terminal", "ADNOC upstream JV (OML 130)"]
+    },
+    "diaspora": { "nigeriansInUAE": 120000 },
+    "strategicImportance": "Africa's largest economy. Largest oil producer in Africa. 220M consumers = largest market. Dangote Refinery (650k bbl/day) will reshape African oil trade — UAE positioned as offtaker."
+  },
+  "opportunities": [
+    {
+      "id": "NG-OPP-001",
+      "title": "Dangote Refinery Crude Offtake",
+      "sector": "Energy",
+      "description": "Aliko Dangote's 650k bbl/day refinery operational 2025. ADNOC in talks for crude supply and refined product offtake agreements.",
+      "opportunityValueUsd": 5000000000,
+      "timelineYears": 2,
+      "riskLevel": "Medium",
+      "sourceVerified": true
+    }
+  ],
+  "riskFactors": [
+    {
+      "id": "NG-RISK-001",
+      "category": "Currency",
+      "title": "Naira Hyperinflation",
+      "description": "NGN lost 75% of value in 2023–24. Subsidy removal triggered inflation spike to 33%. All investments must be USD-denominated.",
+      "severity": "High",
+      "mitigation": "USD-denominated escrow, international arbitration (ICSID)",
+      "sourceVerified": true
+    }
+  ],
+  "keyMeetingTopics": [
+    "Dangote Refinery crude supply agreement",
+    "DP World Lagos expansion",
+    "ADNOC OML 130 block development update",
+    "Lagos–Dubai air cargo route expansion"
+  ],
+  "lastVerifiedAt": "2026-06-01",
+  "dataConfidence": "Medium"
+}

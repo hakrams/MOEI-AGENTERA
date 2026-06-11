@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/document-verification-result.schema.json",
+  "title": "MOEI Document Verification Result",
+  "type": "object",
+  "required": ["contractVersion", "status", "confidence", "aiUsed", "documents"],
+  "properties": {
+    "contractVersion": { "const": "document-verification-result.v1" },
+    "status": {
+      "type": "string",
+      "enum": ["deterministic_check_complete", "ai_specialist_recommended", "ai_review_complete", "blocked_missing_document"]
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "aiUsed": { "type": "boolean" },
+    "aiModel": { "type": ["string", "null"] },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "arLabel", "status", "aiCallPoint"],
+        "properties": {
+          "label": { "type": "string" },
+          "arLabel": { "type": "string" },
+          "status": { "type": "string", "enum": ["pass", "warn", "fail", "neutral"] },
+          "aiCallPoint": { "type": "boolean" },
+          "evidenceRefs": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

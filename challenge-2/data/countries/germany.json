@@ -1,0 +1,79 @@
+{
+  "countryCode": "DE",
+  "countryName": "Germany",
+  "countryNameAr": "ألمانيا",
+  "region": "Western Europe",
+  "capitalCity": "Berlin",
+  "population": 83800000,
+  "gdpUsd": 4073000000000,
+  "gdpPerCapitaUsd": 48636,
+  "gdpGrowthPct": 0.2,
+  "currency": "Euro (EUR)",
+  "languages": ["German"],
+  "governmentType": "Federal Parliamentary Republic",
+  "headOfState": "President Frank-Walter Steinmeier; Chancellor Friedrich Merz (since 2025)",
+  "lastUpdated": "2026-01-01",
+  "economicProfile": {
+    "sectors": {
+      "industry": { "gdpSharePct": 27.1, "keyProducts": ["automobiles", "machinery", "chemicals", "pharmaceuticals", "electronics"] },
+      "services": { "gdpSharePct": 69.0, "keyProducts": ["finance", "insurance", "IT services", "retail"] },
+      "agriculture": { "gdpSharePct": 0.9, "keyProducts": ["wheat", "dairy", "pork", "beer"] }
+    },
+    "exportValueUsd": 1600000000000,
+    "importValueUsd": 1420000000000,
+    "tradeBalanceUsd": 180000000000,
+    "inflationPct": 2.2,
+    "unemploymentPct": 5.5,
+    "fdiInflowsUsd": 38000000000
+  },
+  "energyProfile": {
+    "renewablesSharePct": 59.4,
+    "electricityMixPct": { "wind": 31.1, "solar": 12.2, "biomass": 9.8, "hydro": 3.2, "coal": 26.4, "gas": 11.3, "nuclear": 0, "other": 6.0 },
+    "carbonEmissionsMtCO2": 675,
+    "energyTransitionGoals": {
+      "renewablesTarget2030Pct": 80,
+      "climateNeutralTarget": 2045,
+      "hydrogenImportStrategyGW": 10
+    }
+  },
+  "uaeRelations": {
+    "diplomaticStatus": "Strong bilateral — Strategic Energy Partnership (2022)",
+    "bilateralTradeUsd": 16400000000,
+    "investmentRelations": {
+      "uaeFdiInCountryUsd": 8000000000,
+      "keyUAEInvestors": ["Mubadala (Siemens Gamesa stake)", "ADNOC LNG supply agreements"]
+    },
+    "diaspora": { "germansInUAE": 12000, "uaeCitizensInGermany": 500 },
+    "strategicImportance": "Germany is UAE's top European trading partner. Hydrogen MOU signed 2022 — UAE to supply green ammonia. German engineering expertise critical for ADNOC industrial diversification."
+  },
+  "opportunities": [
+    {
+      "id": "DE-OPP-001",
+      "title": "Green Hydrogen / Ammonia Export to Germany",
+      "sector": "Energy Transition",
+      "description": "Germany signed MOU for UAE to supply 200,000 tonnes green ammonia/year by 2030. ADNOC–Ferrostaal partnership for Hamburg terminal.",
+      "opportunityValueUsd": 3500000000,
+      "timelineYears": 5,
+      "riskLevel": "Medium",
+      "sourceVerified": true
+    }
+  ],
+  "riskFactors": [
+    {
+      "id": "DE-RISK-001",
+      "category": "Economic",
+      "title": "German Industrial Recession",
+      "description": "Germany's industrial output contracted 6% in 2024–25. Auto sector restructuring reduces machinery export demand from UAE buyers.",
+      "severity": "Medium",
+      "sourceVerified": true
+    }
+  ],
+  "keyMeetingTopics": [
+    "Green ammonia supply timeline — ADNOC–Germany MOU",
+    "Siemens energy partnership for UAE wind farms",
+    "Volkswagen/BMW German EV hub in Abu Dhabi",
+    "UAE–EU trade deal impact on German exports"
+  ],
+  "lastVerifiedAt": "2026-06-01",
+  "dataConfidence": "High"
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/document-thread.schema.json",
+  "title": "MOEI Document Thread",
+  "type": "object",
+  "required": ["contractVersion", "caseId", "slot", "documentKey", "attempts", "latestAttemptId", "updatedAt"],
+  "properties": {
+    "contractVersion": { "const": "document-thread.v1" },
+    "caseId": { "type": "string" },
+    "slot": { "type": "string" },
+    "documentKey": { "type": "string" },
+    "latestAttemptId": { "type": "string" },
+    "createdAt": { "type": "string" },
+    "updatedAt": { "type": "string" },
+    "attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "at", "status", "decision", "file"],
+        "properties": {
+          "id": { "type": "string" },
+          "at": { "type": "string" },
+          "source": { "type": "string" },
+          "actor": { "type": "string" },
+          "slot": { "type": "string" },
+          "documentKey": { "type": "string" },
+          "status": { "type": "string" },
+          "decision": { "type": "string" },
+          "file": { "type": ["object", "null"] },
+          "note": { "type": "string" },
+          "recognition": { "type": "object", "additionalProperties": true }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

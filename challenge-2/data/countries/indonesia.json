@@ -1,0 +1,76 @@
+{
+  "countryCode": "ID",
+  "countryName": "Indonesia",
+  "countryNameAr": "إندونيسيا",
+  "region": "Southeast Asia",
+  "capitalCity": "Jakarta (moving to Nusantara)",
+  "population": 278000000,
+  "gdpUsd": 1319000000000,
+  "gdpPerCapitaUsd": 4941,
+  "gdpGrowthPct": 5.0,
+  "currency": "Indonesian Rupiah (IDR)",
+  "languages": ["Indonesian (Bahasa)"],
+  "governmentType": "Presidential Constitutional Republic",
+  "headOfState": "President Prabowo Subianto (since October 2024)",
+  "lastUpdated": "2026-01-01",
+  "economicProfile": {
+    "sectors": {
+      "services": { "gdpSharePct": 44.2, "keyProducts": ["finance", "trade", "digital economy (GoTo, Tokopedia)"] },
+      "industry": { "gdpSharePct": 40.3, "keyProducts": ["palm oil", "nickel", "coal", "tin", "garments"] },
+      "agriculture": { "gdpSharePct": 13.7, "keyProducts": ["rice", "palm oil", "rubber", "coffee", "shrimp"] }
+    },
+    "exportValueUsd": 258000000000,
+    "importValueUsd": 222000000000,
+    "tradeBalanceUsd": 36000000000,
+    "inflationPct": 2.8,
+    "unemploymentPct": 5.2,
+    "fdiInflowsUsd": 22000000000
+  },
+  "energyProfile": {
+    "renewablesSharePct": 15.4,
+    "electricityMixPct": { "coal": 62.1, "gas": 17.2, "hydro": 7.2, "geothermal": 4.9, "solar": 1.6, "other_renewables": 7.0 },
+    "carbonEmissionsMtCO2": 749,
+    "energyTransitionGoals": { "renewablesTarget2030Pct": 23, "coalPhasedown": "2050" }
+  },
+  "uaeRelations": {
+    "diplomaticStatus": "Comprehensive Partnership; Indonesia OIC ally",
+    "bilateralTradeUsd": 5700000000,
+    "investmentRelations": {
+      "uaeFdiInCountryUsd": 2800000000,
+      "keyUAEInvestors": ["Mubadala (nickel mining JV)", "Abu Dhabi–Nusantara capital investment"]
+    },
+    "diaspora": { "indonesiansInUAE": 350000 },
+    "strategicImportance": "World's largest Muslim country. Nickel reserves (#1 globally) critical for EV battery supply chain. Nusantara new capital investment opportunity. Palm oil: UAE uses as biofuel feedstock."
+  },
+  "opportunities": [
+    {
+      "id": "ID-OPP-001",
+      "title": "Nickel-to-EV Battery Supply Chain",
+      "sector": "Mining / Energy Transition",
+      "description": "Indonesia holds 40% of world nickel reserves. Mubadala–Vale Indonesia JV for nickel processing in Sulawesi. UAE as distribution hub for refined nickel to Asian battery makers.",
+      "opportunityValueUsd": 3200000000,
+      "timelineYears": 5,
+      "riskLevel": "Medium",
+      "sourceVerified": true
+    }
+  ],
+  "riskFactors": [
+    {
+      "id": "ID-RISK-001",
+      "category": "Regulatory",
+      "title": "Nickel Export Ban",
+      "description": "Indonesia banned raw nickel ore exports since 2020. Downstream processing required — adds capex for investors.",
+      "severity": "Medium",
+      "mitigation": "Partner with HPAL smelter in Sulawesi — already operating",
+      "sourceVerified": true
+    }
+  ],
+  "keyMeetingTopics": [
+    "Mubadala–Vale nickel JV Phase 2",
+    "Nusantara capital city UAE investment",
+    "Palm oil sustainable sourcing agreement",
+    "Indonesia Halal industry cooperation"
+  ],
+  "lastVerifiedAt": "2026-06-01",
+  "dataConfidence": "Medium-High"
+}

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Housing Arrears Rescheduling — MOEI</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    /* ── Wizard layout ───────────────────────────────────────────────── */
+    .wiz-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 18px; border-bottom: 1px solid var(--border2);
+      background: var(--surface); position: sticky; top: 0; z-index: 50; gap: 12px;
+    }
+    .wiz-back {
+      background: none; border: 1px solid var(--border2); color: var(--muted);
+      font-size: 18px; cursor: pointer; padding: 6px 12px;
+      border-radius: var(--r-sm); line-height: 1; min-width: 42px; min-height: 36px;
+    }
+    .wiz-header-title {
+      font-size: 12px; font-weight: 600; color: var(--muted); text-align: center;
+      flex: 1; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .wiz-lang-btn {
+      background: none; border: 1px solid var(--border2); color: var(--muted);
+      font-size: 11px; cursor: pointer; padding: 6px 10px;
+      border-radius: var(--r-sm); font-weight: 700; min-width: 42px;
+    }
+
+    /* ── Scroll body ─────────────────────────────────────────────────── */
+    .wiz-body { padding: 18px 16px 320px; display: flex; flex-direction: column; gap: 14px; }
+
+    /* ── Cards ───────────────────────────────────────────────────────── */
+    .wiz-card {
+      background: var(--surface); border-radius: var(--r-lg);
+      border: 1px solid var(--border2); padding: 22px 20px;
+    }
+    .wiz-card-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .wiz-card-sub   { font-size: 13px; color: var(--muted); margin-bottom: 18px; line-height: 1.4; }
+    .wiz-section-h  {
+      font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.07em; margin: 18px 0 10px;
+    }
+    .wiz-section-h:first-child { margin-top: 0; }
+
+    /* ── Form fields ─────────────────────────────────────────────────── */
+    .wiz-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .wiz-label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .wiz-input, .wiz-select, .wiz-textarea {
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border2);
+      border-radius: var(--r-sm); color: #fff; font-size: 15px;
+      padding: 13px 14px; width: 100%; font-family: inherit;
+    }
+    .wiz-input:focus, .wiz-select:focus, .wiz-textarea:focus {
+      outline: none; border-color: rgba(201,162,39,0.5);
+    }
+    .wiz-select { appearance: none; -webkit-appearance: none; }
+    .wiz-textarea { resize: none; height: 82px; }
+    .wiz-input-note { font-size: 11px; color: var(--muted2); margin-top: 2px; }
+
+    /* ── Estimate box ────────────────────────────────────────────────── */
+    .wiz-estimate {
+      background: var(--green-soft); border: 1px solid rgba(24,211,154,0.2);
+      border-radius: var(--r-md); padding: 13px 16px;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 6px;
+    }
+    .wiz-estimate-label { font-size: 12px; color: var(--green); font-weight: 600; }
+    .wiz-estimate-val   { font-size: 14px; font-weight: 700; color: var(--green); }
+
+    /* ── Upload rows ─────────────────────────────────────────────────── */
+    .wiz-upload-row {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border2);
+      border-radius: var(--r-md); padding: 14px 16px;
+      display: flex; align-items: center; gap: 14px; margin-bottom: 10px;
+    }
+    .wiz-upload-icon {
+      width: 44px; height: 44px; border-radius: 12px; background: var(--gold-soft);
+      display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+    }
+    .wiz-upload-info { flex: 1; min-width: 0; }
+    .wiz-upload-name { font-size: 14px; font-weight: 600; color: #fff; }
+    .wiz-upload-sub  { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .wiz-upload-status { font-size: 11px; color: var(--muted2); margin-top: 4px; }
+    .wiz-upload-btn {
+      background: var(--gold); border: none; color: #000; font-size: 12px;
+      font-weight: 700; padding: 8px 14px; border-radius: 10px; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .wiz-upload-btn.uploaded { background: var(--green-dim); color: var(--green); }
+    .wiz-demo-btn {
+      width: 100%;
+      margin: -2px 0 12px;
+      background: rgba(24,211,154,0.08);
+      border: 1px solid rgba(24,211,154,0.22);
+      color: var(--green);
+      border-radius: var(--r-sm);
+      padding: 11px 14px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+    .wiz-demo-btn:focus-visible {
+      outline: 2px solid rgba(24,211,154,0.45);
+      outline-offset: 2px;
+    }
+
+    /* ── Summary rows ────────────────────────────────────────────────── */
+    .wiz-summary-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 9px 0; border-bottom: 1px solid var(--border2); gap: 12px;
+    }
+    .wiz-summary-row:last-child { border-bottom: none; }
+    .wiz-summary-label { font-size: 12px; color: var(--muted); flex-shrink: 0; }
+    .wiz-summary-value { font-size: 13px; color: #fff; font-weight: 500; text-align: right; word-break: break-all; }
+    [dir="rtl"] .wiz-summary-value { text-align: left; }
+
+    /* ── Policy check rows ───────────────────────────────────────────── */
+    .wiz-check-row {
+      display: flex; align-items: center; gap: 10px; padding: 10px 0;
+      border-bottom: 1px solid var(--border2);
+    }
+    .wiz-check-row:last-child { border-bottom: none; }
+    .wiz-check-dot {
+      width: 22px; height: 22px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; font-size: 11px;
+      font-weight: 700; flex-shrink: 0;
+    }
+    .wiz-check-dot.pass { background: var(--green-dim); color: var(--green); }
+    .wiz-check-dot.warn { background: var(--red-dim);   color: var(--red);   }
+    .wiz-check-label { font-size: 13px; color: #fff; flex: 1; }
+    .wiz-check-val   { font-size: 12px; color: var(--muted); }
+
+    /* ── Confirm checkbox row ────────────────────────────────────────── */
+    .wiz-confirm-row {
+      display: flex; align-items: flex-start; gap: 12px; padding: 14px;
+      background: var(--gold-soft); border: 1px solid var(--gold-dim);
+      border-radius: var(--r-md); cursor: pointer; margin-top: 14px;
+    }
+    .wiz-confirm-row input[type=checkbox] { width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0; accent-color: var(--gold); }
+    .wiz-confirm-text { font-size: 13px; color: #fff; line-height: 1.5; }
+
+    /* ── Hero (step 1) ───────────────────────────────────────────────── */
+    .wiz-hero { background: var(--surface); border-radius: var(--r-lg); border: 1px solid var(--border2); padding: 26px 20px 22px; }
+    .wiz-hero-tag {
+      display: inline-block; font-size: 11px; font-weight: 700; color: var(--gold);
+      background: var(--gold-soft); padding: 4px 11px; border-radius: 30px;
+      margin-bottom: 14px; letter-spacing: 0.03em;
+    }
+    .wiz-hero-title { font-size: 24px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 10px; }
+    .wiz-hero-desc  { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .wiz-need-list  { margin: 18px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .wiz-need-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: #fff; line-height: 1.4;
+    }
+    .wiz-need-check {
+      width: 20px; height: 20px; border-radius: 50%; background: var(--green-dim);
+      color: var(--green); font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .wiz-rule-note {
+      margin-top: 16px; padding: 11px 14px; background: rgba(26,58,107,0.5);
+      border-radius: var(--r-sm); border: 1px solid rgba(201,162,39,0.2);
+      font-size: 12px; color: rgba(201,162,39,0.85); line-height: 1.5;
+    }
+
+    /* ── Step 6 success ──────────────────────────────────────────────── */
+    .wiz-success-icon {
+      width: 72px; height: 72px; border-radius: 50%; background: var(--green-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 34px; margin: 0 auto 20px;
+    }
+    .wiz-ref-badge {
+      display: inline-block; font-family: monospace; font-size: 15px;
+      font-weight: 700; color: var(--gold); background: var(--gold-soft);
+      padding: 8px 16px; border-radius: 10px; letter-spacing: 0.06em;
+    }
+    .wiz-next-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
+    .wiz-next-list li {
+      font-size: 13px; color: var(--muted); line-height: 1.5;
+      padding-inline-start: 18px; position: relative;
+    }
+    .wiz-next-list li::before {
+      content: '→'; position: absolute; inset-inline-start: 0; color: var(--gold); font-size: 12px;
+    }
+    [dir="rtl"] .wiz-next-list li::before { content: '←'; }
+
+    /* ── Bottom bar ──────────────────────────────────────────────────── */
+    .wiz-bottom-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: rgba(8,14,24,0.97); backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--border2);
+      padding: 14px 18px calc(18px + env(safe-area-inset-bottom, 0px));
+      z-index: 100;
+    }
+    .wiz-cta-btn {
+      width: 100%; background: var(--gold); border: none; color: #000;
+      font-size: 16px; font-weight: 700; padding: 16px;
+      border-radius: var(--r-md); cursor: pointer; margin-bottom: 14px;
+      letter-spacing: 0.02em; font-family: inherit;
+    }
+    .wiz-cta-btn.green { background: var(--green); }
+    .wiz-steps-row {
+      display: flex; align-items: center; justify-content: center; gap: 0;
+    }
+    .wiz-step-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.12); transition: all 0.2s;
+    }
+    .wiz-step-dot.done   { background: rgba(201,162,39,0.35); }
+    .wiz-step-dot.active { background: var(--gold); width: 22px; border-radius: 4px; }
+    .wiz-step-line { height: 2px; width: 18px; background: rgba(255,255,255,0.08); flex-shrink: 0; }
+    .wiz-step-line.done { background: rgba(201,162,39,0.3); }
+    .wiz-step-counter { text-align: center; font-size: 10px; color: var(--muted2); margin-top: 9px; letter-spacing: 0.03em; }
+  </style>
+</head>
+<body>
+  <div id="wiz-root"></div>
+  <script src="./wizard-core.js"></script>
+  <script src="./wizard.js"></script>
+</body>
+</html>

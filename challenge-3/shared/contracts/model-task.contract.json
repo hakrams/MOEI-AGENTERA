@@ -1,0 +1,34 @@
+{
+  "description": "The task object passed to the model router. Determines which model handles the request and what it needs to do.",
+  "fields": {
+    "taskId": { "type": "string" },
+    "type": {
+      "type": "enum",
+      "values": [
+        "input_normalize",
+        "customer_reply",
+        "officer_copilot",
+        "case_summary",
+        "escalation_risk",
+        "leadership_insight",
+        "output_humanize"
+      ]
+    },
+    "channel": { "type": "string" },
+    "language": { "type": "enum", "values": ["ar", "en"] },
+    "rawMessage": { "type": "string", "nullable": true, "note": "For input_normalize tasks only" },
+    "factsToHumanize": { "type": "object", "nullable": true, "note": "For output_humanize tasks only — structured facts from deterministic service" },
+    "sentiment": { "type": "string", "nullable": true },
+    "customerBrain": { "type": "object", "nullable": true, "note": "Full brain for reasoning tasks. Compact brain for customer reply." },
+    "timestamp": { "type": "string", "format": "ISO8601" }
+  },
+  "routing": {
+    "input_normalize": "openai — gpt-4o-mini — tiny input, structured output",
+    "output_humanize": "openai — gpt-4o-mini — tiny input, short warm response",
+    "customer_reply": "openai — gpt-4o or gpt-4o-mini — compact brain",
+    "officer_copilot": "claude — sonnet or haiku — full relevant timeline",
+    "case_summary": "claude — haiku — moderate context",
+    "escalation_risk": "claude — haiku — recent events + signals",
+    "leadership_insight": "claude — sonnet — aggregated event data"
+  }
+}

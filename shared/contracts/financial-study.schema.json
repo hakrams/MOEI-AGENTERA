@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/financial-study.schema.json",
+  "title": "MOEI Financial Study",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "caseId",
+    "beneficiaryId",
+    "builtAt",
+    "currentSalary",
+    "salarySourceStatus",
+    "monthlyObligations",
+    "obligationsRatio",
+    "currentInstallmentRatio",
+    "maxAllowedDeductionAmount",
+    "proposedMonthlyInstallment",
+    "proposedDeductionRate",
+    "proposedReschedulingMonths",
+    "averageIncomePerFamilyMember",
+    "arrearsAmount",
+    "remainingLoanBalance",
+    "unpaidInstallmentsCount",
+    "remainingRepaymentMonths",
+    "documentsStatus",
+    "activeRequestCheck",
+    "twentyPercentRule",
+    "repaymentPeriodRule",
+    "recommendationPath",
+    "recommendationLabel",
+    "confidenceScore",
+    "confidenceLabel",
+    "escalationRequired",
+    "escalationReasons",
+    "reasoningBullets",
+    "auditEvents",
+    "trustGateRequired",
+    "finalAuthority"
+  ],
+  "properties": {
+    "contractVersion": { "const": "financial-study.v1" },
+    "caseId": { "type": "string", "minLength": 1 },
+    "beneficiaryId": { "type": "string", "minLength": 1 },
+    "builtAt": { "type": "string", "format": "date-time" },
+    "currentSalary": { "type": "number", "minimum": 0 },
+    "salarySourceStatus": { "type": "string" },
+    "monthlyObligations": { "type": "number", "minimum": 0 },
+    "obligationsRatio": { "type": "number", "minimum": 0 },
+    "currentInstallmentRatio": { "type": "number", "minimum": 0 },
+    "maxAllowedDeductionAmount": { "type": "number", "minimum": 0 },
+    "proposedMonthlyInstallment": { "type": ["number", "null"], "minimum": 0 },
+    "proposedDeductionRate": { "type": ["number", "null"], "minimum": 0 },
+    "proposedReschedulingMonths": { "type": ["number", "null"], "minimum": 0 },
+    "averageIncomePerFamilyMember": { "type": "number", "minimum": 0 },
+    "arrearsAmount": { "type": "number", "minimum": 0 },
+    "remainingLoanBalance": { "type": "number", "minimum": 0 },
+    "unpaidInstallmentsCount": { "type": "number", "minimum": 0 },
+    "remainingRepaymentMonths": { "type": "number", "minimum": 0 },
+    "documentsStatus": { "type": "string" },
+    "activeRequestCheck": { "type": "object" },
+    "twentyPercentRule": { "type": "object" },
+    "repaymentPeriodRule": { "type": "object" },
+    "ruleTrace": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "recommendationPath": { "type": "string" },
+    "recommendationLabel": { "type": "string" },
+    "recommendationLabelAr": { "type": "string" },
+    "confidenceScore": { "type": "number", "minimum": 0, "maximum": 100 },
+    "confidenceLabel": { "type": "string", "enum": ["high", "medium", "low"] },
+    "escalationRequired": { "type": "boolean" },
+    "escalationReasons": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "reasoningBullets": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "reasoningBulletsAr": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "auditEvents": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "trustGateRequired": { "type": "boolean" },
+    "finalAuthority": { "type": "string" }
+  },
+  "additionalProperties": true
+}

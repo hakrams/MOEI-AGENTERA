@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "customer-account.schema.json",
+  "title": "ArrearsFlow Customer Account",
+  "type": "object",
+  "required": ["contractVersion", "accountId", "status", "profile", "applicationIds", "createdAt", "updatedAt"],
+  "properties": {
+    "contractVersion": { "const": "customer-account.v1" },
+    "accountId": { "type": "string" },
+    "status": { "enum": ["active", "locked", "closed"] },
+    "profile": {
+      "type": "object",
+      "required": ["fullName", "emiratesIdMasked", "mobileMasked", "emailMasked"],
+      "properties": {
+        "fullName": { "type": "string" },
+        "fullNameAr": { "type": "string" },
+        "emiratesIdMasked": { "type": "string" },
+        "mobileMasked": { "type": "string" },
+        "emailMasked": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "credentials": {
+      "type": "object",
+      "required": ["identifier", "passwordProof"],
+      "properties": {
+        "identifier": { "type": "string" },
+        "passwordProof": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "applicationIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "currentApplicationId": {
+      "type": ["string", "null"]
+    },
+    "recentServices": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "applicantMemory": {
+      "type": ["object", "null"]
+    },
+    "createdAt": { "type": "string" },
+    "updatedAt": { "type": "string" }
+  },
+  "additionalProperties": true
+}

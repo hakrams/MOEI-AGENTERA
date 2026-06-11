@@ -1,0 +1,88 @@
+{
+  "countryCode": "US",
+  "countryName": "United States",
+  "countryNameAr": "الولايات المتحدة الأمريكية",
+  "region": "North America",
+  "capitalCity": "Washington D.C.",
+  "population": 335000000,
+  "gdpUsd": 27360000000000,
+  "gdpPerCapitaUsd": 81695,
+  "gdpGrowthPct": 2.5,
+  "currency": "US Dollar (USD)",
+  "languages": ["English"],
+  "governmentType": "Federal Presidential Constitutional Republic",
+  "headOfState": "President Donald Trump (since January 2025)",
+  "lastUpdated": "2026-01-01",
+  "economicProfile": {
+    "sectors": {
+      "services": { "gdpSharePct": 77.6, "keyProducts": ["finance", "technology", "healthcare", "retail"] },
+      "industry": { "gdpSharePct": 18.9, "keyProducts": ["aerospace", "defense", "automobiles", "chemicals", "oil & gas"] },
+      "agriculture": { "gdpSharePct": 1.0, "keyProducts": ["corn", "soybeans", "wheat", "beef", "poultry"] }
+    },
+    "exportValueUsd": 3050000000000,
+    "importValueUsd": 3540000000000,
+    "tradeBalanceUsd": -490000000000,
+    "inflationPct": 3.1,
+    "unemploymentPct": 3.9,
+    "fdiInflowsUsd": 349000000000
+  },
+  "energyProfile": {
+    "oilProductionBblPerDay": 13300000,
+    "naturalGasProductionBcm": 1020,
+    "renewablesSharePct": 21.5,
+    "electricityMixPct": { "natural_gas": 43.1, "coal": 16.2, "nuclear": 18.4, "wind": 10.2, "solar": 5.9, "hydro": 5.5, "other": 0.7 },
+    "carbonEmissionsMtCO2": 5056,
+    "energyTransitionGoals": { "iRATargetBn": 369, "netZeroTarget": 2050 }
+  },
+  "uaeRelations": {
+    "diplomaticStatus": "Major Non-NATO Ally status; strong security partnership",
+    "bilateralTradeUsd": 29000000000,
+    "investmentRelations": {
+      "uaeFdiInCountryUsd": 50000000000,
+      "keyUAEInvestors": ["Abu Dhabi Investment Authority ($130B US portfolio)", "Mubadala", "MGX (AI/tech)"]
+    },
+    "diaspora": { "americansInUAE": 40000, "uaeCitizensInUSA": 3000 },
+    "strategicImportance": "UAE is the US's largest trading partner in the Arab world. Al-Dhafra Air Base hosts 2,000 US troops. $1.4 trillion UAE–US investment framework (2023 Lula parallel). AI chips supply chain currently restricted under BIS rules — active negotiation."
+  },
+  "opportunities": [
+    {
+      "id": "US-OPP-001",
+      "title": "AI Chip and Data Center Partnership",
+      "sector": "Technology",
+      "description": "MGX and G42 seeking NVIDIA H100/H200 access for UAE sovereign AI cloud. US BIS export controls are primary obstacle. Biden-era restrictions partially lifted under Trump 2025.",
+      "opportunityValueUsd": 15000000000,
+      "timelineYears": 3,
+      "riskLevel": "High",
+      "sourceVerified": true
+    },
+    {
+      "id": "US-OPP-002",
+      "title": "LNG Supply Agreement",
+      "sector": "Energy",
+      "description": "ADNOC signed 15-year LNG offtake with Venture Global. Expanding to Calcasieu Pass 2 terminal adds 1.5Mtpa UAE LNG supply.",
+      "opportunityValueUsd": 2500000000,
+      "timelineYears": 2,
+      "riskLevel": "Low",
+      "sourceVerified": true
+    }
+  ],
+  "riskFactors": [
+    {
+      "id": "US-RISK-001",
+      "category": "Technology",
+      "title": "AI Export Controls",
+      "description": "US BIS restrictions on advanced AI chips (NVIDIA A100/H100) to UAE entities. G42's Huawei divestment condition partially lifted but cloud AI still restricted.",
+      "severity": "High",
+      "mitigation": "Engage US Commerce Dept through UAE Embassy for Entity List removal",
+      "sourceVerified": true
+    }
+  ],
+  "keyMeetingTopics": [
+    "AI chip export control negotiations — BIS Entity List",
+    "ADNOC–Venture Global LNG Phase 2",
+    "US–UAE Defense and Security Review",
+    "UAE sovereign wealth fund US tech portfolio expansion"
+  ],
+  "lastVerifiedAt": "2026-06-01",
+  "dataConfidence": "High"
+}

@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إعادة جدولة متأخرات الإسكان</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div style="background:#1a3a6b;color:#fff;font-size:11px;font-weight:600;text-align:center;padding:5px 12px;letter-spacing:0.5px;position:sticky;top:0;z-index:9999" aria-label="Simulation environment notice">🔵 SIMULATED — بيئة تجريبية · Simulation Environment — MOEI Hackathon Demo</div>
+    <div class="uae-strip" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <header class="site-header">
+      <div class="brand-row">
+        <div class="emblem" aria-hidden="true">🇦🇪</div>
+        <div>
+          <strong data-i18n="brand.country"></strong>
+          <span data-i18n="brand.ministry"></span>
+        </div>
+        <div class="award-badge" aria-hidden="true">★★★★★</div>
+      </div>
+      <div class="header-tools">
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" data-i18n-aria="aria.search" />
+          <span aria-hidden="true">⌕</span>
+        </label>
+        <div id="accountHeader" class="account-header" hidden></div>
+        <button class="icon-button" type="button" data-i18n-aria="aria.account">♙</button>
+        <button id="languageToggle" class="language-button" type="button"></button>
+      </div>
+    </header>
+
+    <nav class="main-nav" data-i18n-aria="aria.mainNav">
+      <a href="/" data-i18n="nav.home"></a>
+      <a href="/customer/" class="active" data-i18n="nav.services"></a>
+      <span data-i18n="nav.media"></span>
+      <span data-i18n="nav.knowledge"></span>
+      <span data-i18n="nav.participation"></span>
+      <span data-i18n="nav.openData"></span>
+      <span data-i18n="nav.about"></span>
+      <span data-i18n="nav.ask"></span>
+    </nav>
+
+    <main>
+      <div class="breadcrumb">
+        <a href="/" data-i18n="nav.home"></a>
+        <a href="/customer/" data-i18n="nav.services"></a>
+        <strong aria-current="page" data-i18n="service.breadcrumb"></strong>
+      </div>
+
+      <section class="service-hero">
+        <div>
+          <p class="kicker" data-i18n="service.program"></p>
+          <h1 data-i18n="service.title"></h1>
+          <p id="serviceDescription" data-i18n="service.description"></p>
+        </div>
+        <aside class="service-card">
+          <span data-i18n="hero.statusLabel"></span>
+          <strong data-i18n="hero.statusValue"></strong>
+          <button id="heroActionButton" class="primary-action" type="button" data-i18n="hero.start"></button>
+          <div class="service-tool-icons" aria-hidden="true">
+            <span>⌗</span><span>⌯</span><span>▱</span><span>⎙</span>
+          </div>
+        </aside>
+      </section>
+
+      <section id="publicServiceDetails" class="public-service-details" data-i18n-aria="aria.serviceInfo">
+        <div class="public-process">
+          <section>
+            <h2 data-i18n="public.processHeading"></h2>
+            <ol class="official-process-list">
+              <li><span>1</span><strong data-i18n="public.processLogin"></strong></li>
+              <li><span>2</span><strong data-i18n="public.processFields"></strong></li>
+              <li><span>3</span><strong data-i18n="public.processDocuments"></strong></li>
+              <li><span>4</span><strong data-i18n="public.processObtain"></strong></li>
+            </ol>
+          </section>
+          <aside class="required-documents-card">
+            <h2><span aria-hidden="true">▤</span><span data-i18n="public.requiredDocuments"></span></h2>
+            <p class="warning-copy" data-i18n="public.requiredDocumentsWarning"></p>
+            <ul>
+              <li data-i18n="public.requiredDocumentsItem"></li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="service-detail-rows">
+          <section>
+            <h2 data-i18n="public.termsHeading"></h2>
+            <ul>
+              <li data-i18n="public.termsFinancialStudy"></li>
+              <li data-i18n="public.termsSalaryCap"></li>
+            </ul>
+          </section>
+          <section class="two-column-detail">
+            <h2 data-i18n="public.expectedTime"></h2>
+            <div>
+              <span data-i18n="service.title"></span>
+              <strong data-i18n="public.tenDays"></strong>
+            </div>
+          </section>
+          <section class="two-column-detail">
+            <h2 data-i18n="public.serviceChannels"></h2>
+            <ul>
+              <li data-i18n="public.channelWebsite"></li>
+              <li data-i18n="public.channelApp"></li>
+              <li data-i18n="public.channelFujairah"></li>
+              <li data-i18n="public.channelRasAlKhaimah"></li>
+              <li data-i18n="public.channelAjman"></li>
+              <li data-i18n="public.channelDubai"></li>
+            </ul>
+          </section>
+          <section class="two-column-detail">
+            <h2 data-i18n="public.targetAudience"></h2>
+            <ul>
+              <li data-i18n="public.audienceIndividuals"></li>
+              <li data-i18n="public.audienceWomen"></li>
+            </ul>
+          </section>
+          <section class="two-column-detail">
+            <h2 data-i18n="public.partners"></h2>
+            <strong data-i18n="public.partnerValue"></strong>
+          </section>
+          <section class="two-column-detail">
+            <h2 data-i18n="public.serviceType"></h2>
+            <strong data-i18n="public.serviceTypeValue"></strong>
+          </section>
+          <section class="two-column-detail">
+            <h2 data-i18n="public.userGuide"></h2>
+            <p data-i18n="public.userGuideCopy"></p>
+            <a class="download-link" href="./housing-arrears-user-guide.pdf" target="_blank" rel="noreferrer" data-i18n="public.download"></a>
+          </section>
+          <section>
+            <h2 data-i18n="public.faqHeading"></h2>
+            <details>
+              <summary data-i18n="public.faqPostpone"></summary>
+              <p data-i18n="public.faqPostponeAnswer"></p>
+            </details>
+            <details>
+              <summary data-i18n="public.faqPeriods"></summary>
+              <p data-i18n="public.faqPeriodsAnswer"></p>
+            </details>
+            <details>
+              <summary data-i18n="public.faqDocuments"></summary>
+              <p data-i18n="public.faqDocumentsAnswer"></p>
+            </details>
+          </section>
+        </div>
+      </section>
+
+      <section id="identityGateway" class="identity-gateway" data-i18n-aria="aria.identityGateway">
+        <div class="identity-card primary-identity-card">
+          <p class="kicker" data-i18n="dashboard.kicker"></p>
+          <h2 data-i18n="dashboard.heading"></h2>
+          <div id="identityStatusCard" class="identity-status-card"></div>
+        </div>
+        <div class="identity-card">
+          <p class="kicker" data-i18n="memory.kicker"></p>
+          <h3 data-i18n="memory.heading"></h3>
+          <div id="memoryActionCard" class="memory-action-card"></div>
+        </div>
+      </section>
+
+      <div id="mobileStepBar" class="mobile-step-bar" hidden></div>
+
+      <section id="journeyLayout" class="journey-layout">
+        <aside class="steps-panel" data-i18n-aria="aria.applicationSteps">
+          <h2 data-i18n="steps.heading"></h2>
+          <ol id="stepList"></ol>
+        </aside>
+
+        <section id="applicationPanel" class="application-panel">
+          <div class="panel-head">
+            <div>
+              <p class="kicker" data-i18n="form.kicker"></p>
+              <h2 data-i18n="form.heading"></h2>
+            </div>
+          </div>
+
+          <div id="proactiveAlertBanner" class="proactive-alert-banner" hidden></div>
+          <div id="submissionNotice" class="submission-notice" hidden></div>
+          <div id="correctionNotice" class="correction-notice" hidden></div>
+
+          <form id="customerForm" class="service-form">
+            <fieldset class="account-data-fields" hidden>
+              <legend data-i18n="fieldset.applicant"></legend>
+              <div class="field-grid">
+                <label>
+                  <span data-i18n="field.applicantName"></span>
+                  <input id="applicantName" />
+                </label>
+                <label>
+                  <span data-i18n="field.emiratesId"></span>
+                  <input id="emiratesIdMasked" />
+                </label>
+                <label>
+                  <span data-i18n="field.mobile"></span>
+                  <input id="phoneMasked" />
+                </label>
+                <label>
+                  <span data-i18n="field.email"></span>
+                  <input id="emailMasked" type="email" />
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-step-section" data-step="1">
+              <legend><span class="step-badge">1</span><span data-i18n="fieldset.serviceDetails"></span></legend>
+              <div class="field-grid">
+                <label>
+                  <span data-i18n="field.currentSalary"></span>
+                  <input id="currentSalary" type="number" min="0" inputmode="numeric" />
+                  <small id="salaryError" class="field-error-msg" hidden></small>
+                </label>
+                <label class="field-full-width">
+                  <span data-i18n="field.propertyAddress"></span>
+                  <div class="location-input-wrap" id="propertyAddressWrap">
+                    <input id="propertyAddress" type="text" autocomplete="off" />
+                    <span class="location-spinner" id="propertyAddressSpinner" hidden></span>
+                    <span class="location-check" id="propertyAddressCheck" hidden>✓</span>
+                    <div class="location-dropdown" id="propertyAddressDropdown" hidden></div>
+                  </div>
+                </label>
+                <label>
+                  <span data-i18n="field.remarks"></span>
+                  <textarea id="remarks" rows="4"></textarea>
+                </label>
+              </div>
+              <label class="check-row">
+                <input id="acknowledgement" type="checkbox" />
+                <span data-i18n="field.acknowledgement"></span>
+              </label>
+            </fieldset>
+
+            <fieldset class="loan-details-panel form-step-section" data-step="2">
+              <legend><span class="step-badge">2</span><span data-i18n="loan.heading"></span></legend>
+              <div id="loanDetailsGrid" class="loan-details-grid"></div>
+            </fieldset>
+
+            <fieldset class="form-step-section" data-step="3">
+              <legend><span class="step-badge">3</span><span data-i18n="fieldset.documents"></span></legend>
+              <div class="field-grid">
+                <label>
+                  <span data-i18n="field.incomeDocumentType"></span>
+                  <select id="incomeDocumentType"></select>
+                </label>
+                <div class="upload-field">
+                  <span data-i18n="field.uploadIncomeDocument"></span>
+                  <div class="file-upload-control">
+                    <input id="incomeDocumentFile" class="visually-hidden-file" type="file" accept="image/*,application/pdf" capture="environment" />
+                    <label for="incomeDocumentFile" class="file-upload-button" data-i18n="action.chooseFile"></label>
+                    <span id="incomeDocumentFileName" class="selected-file-name"></span>
+                    <button type="button" id="incomeDocumentClear" class="file-clear-btn" hidden aria-label="Remove file">✕</button>
+                  </div>
+                </div>
+                <label>
+                  <span data-i18n="field.incomeDocumentNote"></span>
+                  <textarea id="incomeDocumentNote" rows="3"></textarea>
+                </label>
+              </div>
+              <label class="check-row" id="officialMissionCaseRow">
+                <input id="officialMissionCase" type="checkbox" />
+                <span data-i18n="field.officialMissionCase"></span>
+              </label>
+              <small id="ddaConflictNote" class="field-note-warning" hidden></small>
+              <div id="missionDocumentFields" class="field-grid conditional-fields" hidden>
+                <div class="upload-field">
+                  <span data-i18n="field.uploadMissionLetter"></span>
+                  <div class="file-upload-control">
+                    <input id="missionLetterFile" class="visually-hidden-file" type="file" accept="image/*,application/pdf" capture="environment" />
+                    <label for="missionLetterFile" class="file-upload-button" data-i18n="action.chooseFile"></label>
+                    <span id="missionLetterFileName" class="selected-file-name"></span>
+                    <button type="button" id="missionLetterClear" class="file-clear-btn" hidden aria-label="Remove file">✕</button>
+                  </div>
+                </div>
+                <label>
+                  <span data-i18n="field.missionLetterNote"></span>
+                  <textarea id="missionLetterNote" rows="3"></textarea>
+                </label>
+                <div class="upload-field">
+                  <span data-i18n="field.uploadPassportStamp"></span>
+                  <div class="file-upload-control">
+                    <input id="passportStampFile" class="visually-hidden-file" type="file" accept="image/*,application/pdf" capture="environment" />
+                    <label for="passportStampFile" class="file-upload-button" data-i18n="action.chooseFile"></label>
+                    <span id="passportStampFileName" class="selected-file-name"></span>
+                    <button type="button" id="passportStampClear" class="file-clear-btn" hidden aria-label="Remove file">✕</button>
+                  </div>
+                </div>
+                <label>
+                  <span data-i18n="field.passportStampNote"></span>
+                  <textarea id="passportStampNote" rows="3"></textarea>
+                </label>
+              </div>
+              <div id="documentWorkspace" class="document-workspace"></div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button class="secondary-action" type="button" id="saveDraftBtn" data-i18n="action.saveDraft"></button>
+              <button class="primary-action" type="submit" data-i18n="action.submit"></button>
+            </div>
+          </form>
+        </section>
+
+        <aside class="right-rail">
+          <section class="info-box">
+            <h3 data-i18n="docs.heading"></h3>
+            <ul id="documentList"></ul>
+          </section>
+
+          <section class="info-box">
+            <h3 data-i18n="status.heading"></h3>
+            <div id="statusCard" class="status-card"></div>
+          </section>
+
+          <section class="info-box">
+            <h3 data-i18n="confirmation.heading"></h3>
+            <div id="confirmationCard" class="confirmation-card"></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script src="../../shared/services/financial-study/programme-loan-service.js"></script>
+    <script src="../../shared/services/financial-study/document-completeness-service.js"></script>
+    <script src="../../shared/services/financial-study/financial-capacity-service.js"></script>
+    <script src="../../shared/services/financial-study/rescheduling-policy-service.js"></script>
+    <script src="../../shared/services/financial-study/recommendation-service.js"></script>
+    <script src="../../shared/services/financial-study/confidence-service.js"></script>
+    <script src="../../shared/services/financial-study/audit-ledger-service.js"></script>
+    <script src="../../shared/services/financial-study/assessment-orchestrator.js"></script>
+    <script src="../../shared/integrations/trustgate-adapter/trustgate-adapter.js"></script>
+    <script src="../../shared/services/trustgate-session-service/trustgate-session-service.js"></script>
+    <script src="../../shared/services/document-recognition-service/document-recognition-service.js"></script>
+    <script src="../../shared/live-api-client.js"></script>
+    <script src="../../shared/workflow.js"></script>
+    <script src="/runtime-config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

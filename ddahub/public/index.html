@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DDAHub</title>
+    <link rel="stylesheet" href="/ddahub/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="/" class="back-link">← Platform Home</a>
+      <button id="refreshBtn" class="ghost-button" type="button">Refresh</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="kicker">Mock financial authority</p>
+        <h1>DDAHub</h1>
+        <p>
+          DDAHub owns direct-debit mandate state, gross-salary basis, current deduction,
+          financial API status, and one-time TrustGate-to-DDA persona linking. It does not
+          approve housing arrears rescheduling.
+        </p>
+      </section>
+
+      <section class="pipeline" aria-label="Authority pipeline">
+        <span>TrustGate identity</span>
+        <strong>→</strong>
+        <span>DDAHub mandate</span>
+        <strong>→</strong>
+        <span>Programme loan data</span>
+        <strong>→</strong>
+        <span>C1 financial study</span>
+        <strong>→</strong>
+        <span>Officer approval</span>
+      </section>
+
+      <section id="overview" class="overview-grid"></section>
+
+      <section class="workspace">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="kicker">One-time binding</p>
+              <h2>Link TrustGate to DDA persona</h2>
+            </div>
+          </div>
+          <form id="linkForm" class="link-form">
+            <label>
+              <span>Available DDA persona</span>
+              <select id="ddaPersonaSelect" required></select>
+            </label>
+            <label>
+              <span>TrustGate ID</span>
+              <input id="trustGateId" type="text" placeholder="TG-1001" required />
+            </label>
+            <label>
+              <span>Emirates ID</span>
+              <input id="emiratesId" type="text" placeholder="784-1988-1234567-1" />
+            </label>
+            <label>
+              <span>Actor</span>
+              <input id="actor" type="text" value="ddahub_console" />
+            </label>
+            <button class="primary-button" type="submit">Create locked link</button>
+          </form>
+          <p id="linkResult" class="result-line" role="status"></p>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="kicker">Integrity</p>
+              <h2>Audit story</h2>
+            </div>
+          </div>
+          <div id="auditList" class="audit-list"></div>
+        </article>
+      </section>
+
+      <section class="section-head">
+        <div>
+          <p class="kicker">Financial personas</p>
+          <h2>DDA persona registry</h2>
+        </div>
+        <p>Demo data is synthetic. DDAHub is a prototype authority boundary, not real UAE infrastructure.</p>
+      </section>
+
+      <section id="personaGrid" class="persona-grid"></section>
+    </main>
+
+    <script src="/ddahub/app.js"></script>
+  </body>
+</html>

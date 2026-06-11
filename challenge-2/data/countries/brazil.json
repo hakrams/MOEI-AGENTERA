@@ -1,0 +1,170 @@
+{
+  "countryCode": "BR",
+  "countryName": "Brazil",
+  "countryNameAr": "البرازيل",
+  "region": "Latin America",
+  "capitalCity": "Brasília",
+  "population": 215300000,
+  "gdpUsd": 2081000000000,
+  "gdpPerCapitaUsd": 9670,
+  "gdpGrowthPct": 2.9,
+  "currency": "Brazilian Real (BRL)",
+  "languages": ["Portuguese"],
+  "governmentType": "Federal Presidential Republic",
+  "headOfState": "President Luiz Inácio Lula da Silva (since 2023)",
+  "lastUpdated": "2026-01-01",
+  "economicProfile": {
+    "sectors": {
+      "agriculture": { "gdpSharePct": 6.8, "keyProducts": ["soybeans", "beef", "coffee", "sugarcane", "orange juice", "poultry"] },
+      "industry": { "gdpSharePct": 17.9, "keyProducts": ["iron ore", "steel", "aircraft (Embraer)", "automobiles", "petrochemicals", "ethanol"] },
+      "services": { "gdpSharePct": 75.3, "keyProducts": ["financial services", "retail", "tourism", "technology"] }
+    },
+    "exportValueUsd": 335000000000,
+    "importValueUsd": 241000000000,
+    "tradeBalanceUsd": 94000000000,
+    "foreignReservesUsd": 355000000000,
+    "inflationPct": 4.6,
+    "unemploymentPct": 7.8,
+    "publicDebtGdpPct": 88.1,
+    "fdiInflowsUsd": 65000000000
+  },
+  "energyProfile": {
+    "totalEnergyConsumptionMtoe": 302,
+    "oilProductionBblPerDay": 3100000,
+    "naturalGasProductionBcm": 25,
+    "renewablesSharePct": 47.4,
+    "electricityMixPct": {
+      "hydro": 63.2,
+      "wind": 12.4,
+      "solar": 5.8,
+      "biomass": 8.9,
+      "fossil": 9.7
+    },
+    "carbonEmissionsMtCO2": 500,
+    "netOilExporterStatus": true,
+    "refineryCapacityBblPerDay": 2100000,
+    "presSalOilFieldsBblReserves": 14000000000,
+    "energyTransitionGoals": {
+      "renewablesTarget2030Pct": 50,
+      "netZeroTarget": 2050,
+      "carbonCreditsMarket": "Active REDD+ participant"
+    }
+  },
+  "uaeRelations": {
+    "diplomaticStatus": "Full diplomatic relations since 1974",
+    "uaeAmbassador": "Active resident ambassador in Brasília",
+    "bilateralTradeUsd": 2800000000,
+    "uaeExportsToCountryUsd": 1200000000,
+    "uaeImportsFromCountryUsd": 1600000000,
+    "topUAEExports": ["aluminum products", "refined petroleum", "plastics", "machinery"],
+    "topUAEImports": ["soybeans", "beef", "coffee", "iron ore", "poultry"],
+    "investmentRelations": {
+      "uaeFdiInCountryUsd": 3500000000,
+      "keyUAEInvestors": ["Mubadala", "Abu Dhabi Investment Authority", "DP World"],
+      "mubadalaAssets": "Stake in Brazilian infrastructure, oil & gas (pre-salt blocks)",
+      "dpWorldPorts": "Port of Santos concession (largest port in South America)"
+    },
+    "treatyFramework": ["Bilateral Investment Treaty", "Double Taxation Agreement", "Aviation Agreement (code-share Abu Dhabi–Brasília)"],
+    "diaspora": { "brazilianInUAE": 15000, "uaeCitizensInBrazil": 800 },
+    "strategicImportance": "Brazil is the UAE's largest trading partner in Latin America. Food security anchor (soybeans, beef). Pre-salt oil partnership. Growing fintech-to-fintech bridge."
+  },
+  "opportunities": [
+    {
+      "id": "BR-OPP-001",
+      "title": "Pre-Salt Oil Partnership",
+      "titleAr": "شراكة نفط ما قبل الملح",
+      "sector": "Energy",
+      "description": "Petrobras pre-salt blocks off Rio de Janeiro coast hold 14 billion barrels estimated. UAE state entities (Mubadala) already hold minority stakes. Expanding ADNOC co-investment in Block C-M-713 opens $8B opportunity.",
+      "opportunityValueUsd": 8000000000,
+      "timelineYears": 5,
+      "riskLevel": "Medium",
+      "keyContacts": ["Petrobras CEO", "Brazil Ministry of Mines and Energy"],
+      "status": "Active negotiation",
+      "sourceVerified": true
+    },
+    {
+      "id": "BR-OPP-002",
+      "title": "Food Security — Soybean Offtake Agreements",
+      "titleAr": "أمن غذائي — اتفاقيات فول الصويا",
+      "sector": "Agriculture / Food Security",
+      "description": "Brazil produces 40% of global soybeans. UAE imports 350,000 tons annually via COFCO and Bunge intermediaries. Direct government-to-government offtake would cut cost by 12–15% and secure 5-year supply.",
+      "opportunityValueUsd": 450000000,
+      "timelineYears": 3,
+      "riskLevel": "Low",
+      "keyContacts": ["Brazil MAPA (Ministry of Agriculture)", "ABIOVE (Soybean exporters association)"],
+      "status": "Feasibility stage",
+      "sourceVerified": true
+    },
+    {
+      "id": "BR-OPP-003",
+      "title": "Renewable Energy Technology Export",
+      "titleAr": "تصدير تكنولوجيا الطاقة المتجددة",
+      "sector": "Energy / Technology",
+      "description": "Masdar and Brazil's BNDES can co-fund a 2GW offshore wind development in Ceará State. Brazil has 900GW offshore wind potential — among the highest globally.",
+      "opportunityValueUsd": 4200000000,
+      "timelineYears": 7,
+      "riskLevel": "Medium-High",
+      "keyContacts": ["Masdar CEO", "BNDES (Brazilian Development Bank)"],
+      "status": "MOU signed",
+      "sourceVerified": true
+    },
+    {
+      "id": "BR-OPP-004",
+      "title": "DP World Santos Expansion",
+      "titleAr": "توسعة ميناء سانتوس",
+      "sector": "Logistics / Infrastructure",
+      "description": "DP World holds Santos concession. Phase 3 expansion ($1.2B) would add 2M TEU capacity. Brazil trade volume up 18% YoY post-2025 trade deal with Mercosur-GCC talks.",
+      "opportunityValueUsd": 1200000000,
+      "timelineYears": 4,
+      "riskLevel": "Low",
+      "keyContacts": ["DP World Brazil Country CEO"],
+      "status": "Board approval pending",
+      "sourceVerified": true
+    }
+  ],
+  "riskFactors": [
+    {
+      "id": "BR-RISK-001",
+      "category": "Political",
+      "title": "Government Policy Uncertainty",
+      "description": "Lula administration's interventionist stance on energy pricing and state enterprise governance (Petrobras dividend controversy) creates policy unpredictability.",
+      "severity": "Medium",
+      "mitigation": "Structure investments through ICSID arbitration clauses and BNDES co-investment shield",
+      "sourceVerified": true
+    },
+    {
+      "id": "BR-RISK-002",
+      "category": "Currency",
+      "title": "BRL Volatility",
+      "description": "Brazilian Real has depreciated 25% against USD in 24 months. Dollar-denominated contracts preferred for infrastructure deals.",
+      "severity": "High",
+      "mitigation": "USD-denominated contracts, hedge via B3 FX derivatives",
+      "sourceVerified": true
+    },
+    {
+      "id": "BR-RISK-003",
+      "category": "Regulatory",
+      "title": "Taxation Complexity",
+      "description": "Brazil has one of the world's most complex tax systems (5,000+ federal, state, and municipal taxes). Tax reform enacted 2024 (CBS/IBS) simplifies from 2026.",
+      "severity": "Medium",
+      "mitigation": "Engage local tax counsel; structure through Holding in Cayman with Brazil subsidiary",
+      "sourceVerified": true
+    }
+  ],
+  "keyMeetingTopics": [
+    "Pre-salt oil block co-investment status (Block C-M-713)",
+    "Soybean direct offtake agreement — price and volume",
+    "Masdar–BNDES offshore wind MOU next steps",
+    "DP World Santos Phase 3 board timeline",
+    "BRL hedging strategy for existing portfolio",
+    "Amazon carbon credits market access for UAE ESG compliance"
+  ],
+  "talkingPoints": {
+    "openingNarrative": "Brazil and the UAE share a remarkable strategic alignment: both are energy powerhouses navigating the transition to renewables, both are food-secure nations with global agricultural export ambitions, and both have made bold infrastructure bets on their futures. The question for today's meeting is how to deepen the partnership at the investment level, particularly in pre-salt oil and renewable energy.",
+    "criticalNumber": "$2.8B bilateral trade in 2025, growing 14% year-on-year",
+    "surpriseFact": "Brazil's offshore wind potential of 900GW exceeds the UAE's total national electricity generation capacity by 150 times — an extraordinary opportunity for Masdar.",
+    "bridgingStatement": "The UAE's food security imperative and Brazil's desire for sovereign buyers create a natural G2G soybean framework that benefits both nations' long-term stability."
+  },
+  "lastVerifiedAt": "2026-06-01",
+  "dataConfidence": "High — cross-verified with IMF WEO 2025, Petrobras annual report, MOFAIC bilateral data"
+}

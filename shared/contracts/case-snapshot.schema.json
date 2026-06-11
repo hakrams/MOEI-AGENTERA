@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/case-snapshot.schema.json",
+  "title": "MOEI Prepared Case Snapshot",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "caseId",
+    "snapshotType",
+    "builtAt",
+    "freshness",
+    "source",
+    "workerStatus",
+    "aiUsed",
+    "aiCallPoint",
+    "confidence",
+    "requiresHumanApproval",
+    "status",
+    "recommendation",
+    "evidenceRefs",
+    "nextActions"
+  ],
+  "properties": {
+    "contractVersion": { "const": "case-snapshot.v1" },
+    "caseId": { "type": "string" },
+    "snapshotType": { "type": "string", "enum": ["officer_case_brief", "citizen_case_status"] },
+    "builtAt": { "type": "string", "format": "date-time" },
+    "freshness": {
+      "type": "object",
+      "required": ["stale", "source"],
+      "properties": {
+        "stale": { "type": "boolean" },
+        "source": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "source": { "type": "string" },
+    "workerStatus": { "type": "string" },
+    "aiUsed": { "type": "boolean" },
+    "aiCallPoint": { "type": "string" },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "requiresHumanApproval": { "type": "boolean" },
+    "status": { "type": "string" },
+    "risk": { "type": "object" },
+    "recommendation": { "type": "object" },
+    "evidenceRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "nextActions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "review": { "type": "object" }
+  },
+  "additionalProperties": true
+}

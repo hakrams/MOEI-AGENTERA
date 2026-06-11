@@ -1,0 +1,76 @@
+{
+  "briefingId": "BRIEF-BR-DEMO-2026",
+  "countryCode": "BR",
+  "countryName": "Brazil",
+  "countryNameAr": "البرازيل",
+  "generatedAt": "2026-06-07T09:00:00.000Z",
+  "llmSource": "claude",
+  "orchestratorSteps": [
+    { "step": 1, "label": "Data Retrieved", "detail": "Brazil — 4 opportunities, 3 risks" },
+    { "step": 2, "label": "Capacity Analysed", "detail": "Major economy ($2,081B GDP), Moderate trade ($2.8B bilateral), Renewables-led (47.4%)" },
+    { "step": 3, "label": "Opportunities Ranked", "detail": "Top: Pre-Salt Oil Partnership ($8B over 5 years)" },
+    { "step": 4, "label": "Brief Generated", "detail": "Source: claude — 400-word strategic brief produced" },
+    { "step": 5, "label": "Source Guard Complete", "detail": "Trust score: 96% | Flags: 0 — all claims verified against source data" }
+  ],
+  "brief": {
+    "executiveSummary": "Brazil and the UAE maintain full diplomatic relations since 1974, with bilateral trade reaching $2.8B in 2025 — a 14% year-on-year increase that establishes Brazil as the UAE's largest Latin American trading partner. The strategic relationship is anchored by three converging pillars: Mubadala's pre-salt oil partnership with Petrobras, DP World's concession at South America's largest port, and an accelerating food security corridor positioning Brazil as the UAE's critical soybean and beef supply chain anchor.",
+    "strategicContext": "Brazil occupies a singular position in UAE's long-term strategic calculus: simultaneously the primary Latin American food security supplier and an energy partner of growing significance. With 14 billion barrels in pre-salt reserves, 900GW offshore wind potential, and a 2024 tax reform simplifying the investment environment from 2026 onward, Brazil presents a rare convergence of near-term oil returns and long-term renewable co-development opportunity. UAE state entities — Mubadala, ADIA, and DP World — have collectively committed $3.5B, establishing a foundation and track record that few competing nations can match. The Mercosur-GCC trade talks further strengthen the structural case for expanding UAE-Brazil ties.",
+    "topOpportunities": [
+      {
+        "title": "Pre-Salt Oil Partnership",
+        "value": "$8B over 5 years",
+        "priority": "High",
+        "insight": "ADNOC co-investment in Block C-M-713 builds directly on Mubadala's existing stake. Active negotiation with Petrobras CEO is live — competing Chinese NOC bids make this time-sensitive; board-level commitment required this quarter."
+      },
+      {
+        "title": "Renewable Energy Technology Export (Masdar–BNDES Offshore Wind)",
+        "value": "$4.2B over 7 years",
+        "priority": "High",
+        "insight": "Masdar-BNDES MOU already signed. 2GW offshore wind development in Ceará State leverages Brazil's 900GW potential — the world's second-largest offshore wind resource. First-mover advantage is time-critical before European developers enter at scale."
+      },
+      {
+        "title": "DP World Santos Phase 3 Expansion",
+        "value": "$1.2B over 4 years",
+        "priority": "Medium",
+        "insight": "Board approval is the single critical path item. 2M TEU capacity addition captures Brazil's 18% YoY trade volume increase post-Mercosur-GCC. Secures Santos as UAE's strategic Americas logistics gateway."
+      }
+    ],
+    "keyRisks": [
+      {
+        "category": "Political",
+        "risk": "Lula administration's interventionist stance on energy pricing and Petrobras governance (dividend controversy 2024) creates policy unpredictability for pre-salt block return expectations.",
+        "mitigation": "Structure all new commitments with ICSID arbitration clauses; engage BNDES as co-investment shield to insulate from political risk"
+      },
+      {
+        "category": "Currency",
+        "risk": "Brazilian Real has depreciated 25% against USD over 24 months, compressing AED-denominated returns on BRL-denominated portfolio holdings.",
+        "mitigation": "Mandate USD-denominated contracts for all new commitments; hedge existing BRL exposure via B3 FX derivatives market"
+      }
+    ],
+    "talkingPoints": [
+      "ADNOC co-investment in Block C-M-713: confirm commitment alongside Mubadala this quarter — at $8B this is the highest-value near-term decision on the bilateral agenda and Chinese competitors are moving.",
+      "Masdar-BNDES wind MOU: advance from MOU to binding framework agreement — Brazil's 900GW offshore potential exceeds UAE's total national generation by 150 times, a generational asset for Masdar's global portfolio.",
+      "DP World Santos Phase 3: unlock board approval — the $1.2B expansion positions UAE as South America's dominant logistics operator before Mercosur-GCC volumes materially increase post-2026.",
+      "G2G soybean offtake framework: Brazil produces 40% of global supply; a direct government agreement eliminates COFCO/Bunge margins and saves 12–15% on UAE's 350,000-ton annual import bill.",
+      "Bilateral BRL hedging protocol: propose a sovereign-level FX framework between UAE sovereign funds and the Brazilian Central Bank to protect the existing $3.5B UAE portfolio from further Real depreciation."
+    ],
+    "closingRecommendation": "Prioritize the Pre-Salt Oil Partnership co-investment decision as the meeting's concrete output — it is time-sensitive, $8B in scale, and extends UAE's existing Mubadala position with ADNOC credibility. Set a 90-day binding deadline for the Masdar-BNDES offshore wind agreement as the second priority to secure first-mover position in Brazil's renewable energy sector."
+  },
+  "sourceGuard": {
+    "verified": true,
+    "trustScore": 96,
+    "verifiedClaimsCount": 14,
+    "totalClaimsChecked": 14,
+    "flags": [],
+    "dataConfidence": "High — cross-verified with IMF WEO 2025, Petrobras annual report, MOFAIC bilateral data",
+    "lastVerifiedAt": "2026-06-01"
+  },
+  "rawCountrySummary": {
+    "gdpBn": 2081,
+    "gdpGrowthPct": 2.9,
+    "bilateralTradeUsd": 2800000000,
+    "opportunityCount": 4,
+    "riskCount": 3,
+    "dataConfidence": "High — cross-verified with IMF WEO 2025, Petrobras annual report, MOFAIC bilateral data"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "countryCode": "KE",
+  "countryName": "Kenya",
+  "countryNameAr": "كينيا",
+  "region": "East Africa",
+  "capitalCity": "Nairobi",
+  "population": 54700000,
+  "gdpUsd": 118000000000,
+  "gdpPerCapitaUsd": 2158,
+  "gdpGrowthPct": 5.3,
+  "currency": "Kenyan Shilling (KES)",
+  "languages": ["Swahili", "English"],
+  "governmentType": "Presidential Republic",
+  "headOfState": "President William Ruto (since 2022)",
+  "lastUpdated": "2026-01-01",
+  "economicProfile": {
+    "sectors": {
+      "services": { "gdpSharePct": 51.2, "keyProducts": ["mobile money (M-Pesa)", "banking", "tech hub", "tourism"] },
+      "agriculture": { "gdpSharePct": 33.4, "keyProducts": ["tea", "coffee", "horticulture", "flowers"] },
+      "industry": { "gdpSharePct": 15.4, "keyProducts": ["cement", "food processing", "textiles"] }
+    },
+    "exportValueUsd": 6700000000,
+    "importValueUsd": 19800000000,
+    "tradeBalanceUsd": -13100000000,
+    "inflationPct": 5.9,
+    "unemploymentPct": 5.6,
+    "fdiInflowsUsd": 650000000
+  },
+  "energyProfile": {
+    "renewablesSharePct": 92.1,
+    "electricityMixPct": { "geothermal": 44.4, "hydro": 34.2, "wind": 13.5, "solar": 6.5, "fossil": 1.4 },
+    "carbonEmissionsMtCO2": 21,
+    "energyTransitionGoals": { "solarTarget2030GW": 3, "carbonneutralTarget": 2050 }
+  },
+  "uaeRelations": {
+    "diplomaticStatus": "Active bilateral; UAE is Nairobi's second-largest investor",
+    "bilateralTradeUsd": 3400000000,
+    "investmentRelations": {
+      "uaeFdiInCountryUsd": 1200000000,
+      "keyUAEInvestors": ["DP World (Port of Mombasa)", "Emaar (Nairobi residential)", "ADNOC upstream exploration"]
+    },
+    "diaspora": { "kenyansInUAE": 70000 },
+    "strategicImportance": "Kenya is UAE's gateway to East Africa. Jomo Kenyatta is East Africa's hub airport — UAE airlines are largest foreign carriers. Silicon Savannah (Nairobi tech hub) = fintech partnership."
+  },
+  "opportunities": [
+    {
+      "id": "KE-OPP-001",
+      "title": "Geothermal Energy Export Technology",
+      "sector": "Renewable Energy",
+      "description": "Kenya has 14GW untapped geothermal (Lake Turkana rift). Masdar–KenGen geothermal exploration MOU for East Africa energy transition.",
+      "opportunityValueUsd": 900000000,
+      "timelineYears": 6,
+      "riskLevel": "Medium",
+      "sourceVerified": true
+    },
+    {
+      "id": "KE-OPP-002",
+      "title": "Nairobi Food Hub",
+      "sector": "Agriculture / Logistics",
+      "description": "UAE-funded cold chain logistics at JKIA for East Africa horticultural exports. Kenya exports $700M flowers/vegetables to EU — UAE as secondary market.",
+      "opportunityValueUsd": 200000000,
+      "timelineYears": 3,
+      "riskLevel": "Low",
+      "sourceVerified": true
+    }
+  ],
+  "riskFactors": [
+    {
+      "id": "KE-RISK-001",
+      "category": "Political",
+      "title": "Political Protest Cycle",
+      "description": "2024 Gen-Z protests forced IMF austerity reversal. Recurring political-economic instability affects business confidence.",
+      "severity": "Medium",
+      "sourceVerified": true
+    }
+  ],
+  "keyMeetingTopics": [
+    "DP World Mombasa expansion status",
+    "Geothermal energy MOU next steps",
+    "Nairobi real estate market (Emaar)",
+    "M-Pesa–UAE digital wallet bridge"
+  ],
+  "lastVerifiedAt": "2026-06-01",
+  "dataConfidence": "Medium-High"
+}

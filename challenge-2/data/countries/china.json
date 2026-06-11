@@ -1,0 +1,87 @@
+{
+  "countryCode": "CN",
+  "countryName": "China",
+  "countryNameAr": "الصين",
+  "region": "East Asia",
+  "capitalCity": "Beijing",
+  "population": 1412000000,
+  "gdpUsd": 17880000000000,
+  "gdpPerCapitaUsd": 12720,
+  "gdpGrowthPct": 4.6,
+  "currency": "Chinese Yuan / Renminbi (CNY)",
+  "languages": ["Mandarin Chinese"],
+  "governmentType": "Single-party state — People's Republic",
+  "headOfState": "President Xi Jinping (since 2013)",
+  "lastUpdated": "2026-01-01",
+  "economicProfile": {
+    "sectors": {
+      "industry": { "gdpSharePct": 39.1, "keyProducts": ["electronics", "steel", "cement", "EV batteries", "solar panels", "ships"] },
+      "services": { "gdpSharePct": 54.6, "keyProducts": ["retail", "finance", "digital platforms"] },
+      "agriculture": { "gdpSharePct": 6.3, "keyProducts": ["rice", "wheat", "pork", "vegetables"] }
+    },
+    "exportValueUsd": 3380000000000,
+    "importValueUsd": 2680000000000,
+    "tradeBalanceUsd": 700000000000,
+    "inflationPct": 0.3,
+    "unemploymentPct": 5.1,
+    "fdiInflowsUsd": 163000000000
+  },
+  "energyProfile": {
+    "renewablesSharePct": 31.5,
+    "electricityMixPct": { "coal": 58.4, "hydro": 15.1, "wind": 8.9, "solar": 6.2, "nuclear": 5.1, "other": 6.3 },
+    "carbonEmissionsMtCO2": 11470,
+    "energyTransitionGoals": { "netZeroTarget": 2060, "peakCarbonTarget": 2030 }
+  },
+  "uaeRelations": {
+    "diplomaticStatus": "Comprehensive Strategic Partnership (2019)",
+    "bilateralTradeUsd": 96000000000,
+    "investmentRelations": {
+      "uaeFdiInCountryUsd": 12000000000,
+      "keyUAEInvestors": ["Mubadala", "Abu Dhabi Investment Authority", "DP World Jebel Ali–China logistics corridor"]
+    },
+    "diaspora": { "chineseInUAE": 220000, "uaeCitizensInChina": 500 },
+    "strategicImportance": "UAE–China trade is the largest bilateral relationship in the Arab world. Belt and Road investment flows. 50% of Chinese oil passes through UAE waters. Digital yuan pilot in UAE."
+  },
+  "opportunities": [
+    {
+      "id": "CN-OPP-001",
+      "title": "EV Battery Supply Chain",
+      "sector": "Energy Transition / Manufacturing",
+      "description": "CATL and BYD seeking Gulf distribution hubs. UAE can anchor $2B battery logistics and R&D center at Khalifa Industrial Zone.",
+      "opportunityValueUsd": 2000000000,
+      "timelineYears": 3,
+      "riskLevel": "Medium",
+      "sourceVerified": true
+    },
+    {
+      "id": "CN-OPP-002",
+      "title": "Solar Panel Manufacturing Hub",
+      "sector": "Renewable Energy",
+      "description": "Longi Green Energy eyeing UAE for Middle East solar assembly. Masdar City 500MW solar panel factory MOU.",
+      "opportunityValueUsd": 800000000,
+      "timelineYears": 4,
+      "riskLevel": "Low",
+      "sourceVerified": true
+    }
+  ],
+  "riskFactors": [
+    {
+      "id": "CN-RISK-001",
+      "category": "Geopolitical",
+      "title": "US-China Decoupling",
+      "description": "US technology sanctions (CHIPS Act, Huawei restrictions) may complicate UAE entities investing in Chinese tech. Dual-use technology transfer risks.",
+      "severity": "High",
+      "mitigation": "Separate Chinese tech investments from US-aligned portfolio entities",
+      "sourceVerified": true
+    }
+  ],
+  "keyMeetingTopics": [
+    "Digital yuan payment pilot in UAE banks",
+    "EV battery logistics hub at Khalifa Industrial Zone",
+    "Jebel Ali–Tianjin shipping capacity expansion",
+    "CHIPS Act compliance for UAE entities with China exposure",
+    "Belt and Road infrastructure bond co-issuance"
+  ],
+  "lastVerifiedAt": "2026-06-01",
+  "dataConfidence": "High"
+}

@@ -1,0 +1,91 @@
+{
+  "countryCode": "IN",
+  "countryName": "India",
+  "countryNameAr": "الهند",
+  "region": "South Asia",
+  "capitalCity": "New Delhi",
+  "population": 1428600000,
+  "gdpUsd": 3730000000000,
+  "gdpPerCapitaUsd": 2601,
+  "gdpGrowthPct": 6.8,
+  "currency": "Indian Rupee (INR)",
+  "languages": ["Hindi", "English", "22 scheduled languages"],
+  "governmentType": "Federal Parliamentary Republic",
+  "headOfState": "President Droupadi Murmu; PM Narendra Modi (since 2014)",
+  "lastUpdated": "2026-01-01",
+  "economicProfile": {
+    "sectors": {
+      "agriculture": { "gdpSharePct": 15.4, "keyProducts": ["rice", "wheat", "cotton", "sugarcane", "spices"] },
+      "industry": { "gdpSharePct": 28.2, "keyProducts": ["pharmaceuticals", "software", "steel", "textiles", "automobiles"] },
+      "services": { "gdpSharePct": 56.4, "keyProducts": ["IT services", "financial services", "telecommunications", "tourism"] }
+    },
+    "exportValueUsd": 435000000000,
+    "importValueUsd": 690000000000,
+    "tradeBalanceUsd": -255000000000,
+    "inflationPct": 4.8,
+    "unemploymentPct": 7.5,
+    "fdiInflowsUsd": 71000000000
+  },
+  "energyProfile": {
+    "totalEnergyConsumptionMtoe": 953,
+    "renewablesSharePct": 22.1,
+    "electricityMixPct": { "coal": 72.5, "hydro": 9.1, "solar": 8.8, "wind": 4.6, "other": 5.0 },
+    "carbonEmissionsMtCO2": 2837,
+    "energyTransitionGoals": {
+      "solarCapacityTarget2030GW": 500,
+      "renewablesTargetGW2030": 500,
+      "netZeroTarget": 2070
+    }
+  },
+  "uaeRelations": {
+    "diplomaticStatus": "Comprehensive Strategic Partnership (2017)",
+    "bilateralTradeUsd": 85000000000,
+    "investmentRelations": {
+      "uaeFdiInCountryUsd": 15000000000,
+      "keyUAEInvestors": ["Abu Dhabi Investment Authority", "Mubadala", "ADQ", "DP World"]
+    },
+    "diaspora": { "indiansInUAE": 3500000, "uaeCitizensInIndia": 200 },
+    "strategicImportance": "India is the UAE's largest trading partner. 3.5M Indian diaspora. CEPA signed 2022. Digital payments bridge (UPI–AANI). Defense and energy cooperation deepening."
+  },
+  "opportunities": [
+    {
+      "id": "IN-OPP-001",
+      "title": "Solar Energy Technology Partnership",
+      "sector": "Renewable Energy",
+      "description": "India's 500GW solar target by 2030 requires $500B investment. Masdar and ADNOC partnering with NTPC and SECI for Rajasthan solar parks.",
+      "opportunityValueUsd": 5000000000,
+      "timelineYears": 5,
+      "riskLevel": "Low",
+      "sourceVerified": true
+    },
+    {
+      "id": "IN-OPP-002",
+      "title": "Pharmaceutical Supply Chain",
+      "sector": "Healthcare",
+      "description": "India supplies 30% of UAE pharmaceutical imports. UAE Health Authority–India MoHFW MOU for generic medicine supply security.",
+      "opportunityValueUsd": 800000000,
+      "timelineYears": 3,
+      "riskLevel": "Low",
+      "sourceVerified": true
+    }
+  ],
+  "riskFactors": [
+    {
+      "id": "IN-RISK-001",
+      "category": "Geopolitical",
+      "title": "Pakistan Border Tensions",
+      "description": "Periodic military tensions on Line of Control create regional uncertainty. UAE's Pakistan ties require careful diplomatic navigation.",
+      "severity": "Low-Medium",
+      "sourceVerified": true
+    }
+  ],
+  "keyMeetingTopics": [
+    "CEPA utilization rate and remaining barriers",
+    "Solar energy co-investment in Rajasthan",
+    "Pharmaceutical supply agreement update",
+    "Digital payments bridge (UPI–AANI) expansion",
+    "India food exports to UAE (onion ban history)"
+  ],
+  "lastVerifiedAt": "2026-06-01",
+  "dataConfidence": "High"
+}

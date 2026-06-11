@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "trustgate-verified-person.schema.json",
+  "title": "TrustGate Verified Person",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "provider",
+    "providerSubject",
+    "accountLevel",
+    "verifiedAt",
+    "claims",
+    "availableData",
+    "missingData"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "trustgate-verified-person.v1"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "providerSubject": {
+      "type": "string"
+    },
+    "accountLevel": {
+      "type": "string"
+    },
+    "verifiedAt": {
+      "type": "string"
+    },
+    "claims": {
+      "type": "object",
+      "required": [
+        "fullName",
+        "fullNameAr",
+        "emiratesIdMasked",
+        "mobileMasked",
+        "emailMasked"
+      ],
+      "properties": {
+        "fullName": { "type": "string" },
+        "fullNameAr": { "type": "string" },
+        "emiratesIdMasked": { "type": "string" },
+        "mobileMasked": { "type": "string" },
+        "emailMasked": { "type": "string" },
+        "nationality": { "type": "string" },
+        "nationalityAr": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "availableData": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "missingData": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moei.prototype.local/contracts/worker-health.schema.json",
+  "title": "MOEI Worker Health",
+  "type": "object",
+  "required": ["contractVersion", "status", "builtAt", "deterministicWorkers", "aiCallPoint"],
+  "properties": {
+    "contractVersion": { "const": "worker-health.v1" },
+    "status": { "type": "string", "enum": ["ready", "warning", "blocked", "disabled"] },
+    "builtAt": { "type": "string", "format": "date-time" },
+    "deterministicWorkers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "aiCallPoint": { "type": "string" },
+    "fallbackMode": { "type": "string" },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}
