@@ -395,17 +395,19 @@
         <p class="wiz-field-note">${lang === "ar" ? "الحد الأقصى للقسط: 20% من الراتب" : "Max monthly instalment: 20% of salary"}</p>
       </div>
 
-      ${formData.monthlySalary ? `<div class="wiz-estimate">
-        <div>
-          <div class="wiz-estimate-label">${t("estimateLabel")}</div>
-        </div>
-        <div class="wiz-estimate-value">${Math.round(Number(formData.monthlySalary) * 0.2).toLocaleString()} ${lang === "ar" ? "د.إ" : "AED"}</div>
-      </div>` : ""}
+      <div id="salary-estimate" class="wiz-estimate" ${formData.monthlySalary ? "" : "hidden"}>
+        <div><div class="wiz-estimate-label">${t("estimateLabel")}</div></div>
+        <div id="salary-estimate-val" class="wiz-estimate-value">${Math.round(Number(formData.monthlySalary) * 0.2).toLocaleString()} ${lang === "ar" ? "د.إ" : "AED"}</div>
+      </div>
       ${actionBar()}
     </div>`;
     $("f_monthlySalary")?.addEventListener("input", e => {
       formData.monthlySalary = e.target.value;
-      renderStep();
+      const v = Number(e.target.value);
+      const box = $("salary-estimate");
+      const val = $("salary-estimate-val");
+      if (box) box.hidden = !e.target.value;
+      if (val) val.textContent = `${Math.round(v * 0.2).toLocaleString()} ${lang === "ar" ? "د.إ" : "AED"}`;
     });
   }
 
